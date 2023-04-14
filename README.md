@@ -1,0 +1,1 @@
+# @simonsmith/cypress-image-snapshot
