@@ -3,7 +3,7 @@
   "packageManager": "yarn@3.5.0",
   "scripts": {
     "build:ts": "tsc",
-    "lint:eslint": "eslint ."
+    "lint:eslint": "eslint --ext .ts,.json ."
   },
   "devDependencies": {
     "@types/node": "^18.15.11",

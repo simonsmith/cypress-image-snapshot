@@ -1,3 +1,3 @@
-console.log('lets go');
+console.log('lets go')
 
 export {}
