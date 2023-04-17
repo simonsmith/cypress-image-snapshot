@@ -2,6 +2,8 @@
   "name": "@simonsmith/cypress-image-snapshot",
   "packageManager": "yarn@3.5.0",
   "scripts": {
+    "build": "run-s build:clean build:ts",
+    "build:clean": "rm -rf dist",
     "build:ts": "tsc",
     "lint": "run-p -c 'lint:*'",
     "lint:ts": "tsc --noEmit",
