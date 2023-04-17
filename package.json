@@ -5,17 +5,22 @@
     "build:ts": "tsc",
     "lint": "run-p -c 'lint:*'",
     "lint:ts": "tsc --noEmit",
-    "lint:eslint": "eslint --ext .ts,.json ."
+    "lint:eslint": "eslint --ext .ts,.json .",
+		"cypress:open": "cypress open"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",
     "@typescript-eslint/eslint-plugin": "^5.58.0",
     "@typescript-eslint/parser": "^5.58.0",
+    "cypress": "^12.9.0",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.8.7",
     "typescript": "^5.0.4"
+  },
+  "peerDependencies": {
+    "cypress": ">10.0.0"
   }
 }
