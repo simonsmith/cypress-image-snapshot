@@ -22,8 +22,7 @@ const matchImageSnapshot = (
   subject: Subject,
   options?: AddMatchImageSnapshotCommandOptions,
 ) => {
-  console.log(options)
-  console.log('I am a plugin now', subject)
+  console.log('subject', subject)
   return cy.wrap(subject)
 }
 
