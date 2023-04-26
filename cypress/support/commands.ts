@@ -1,3 +1,3 @@
-import {addMatchImageSnapshotCommand} from '../../src'
+import {addMatchImageSnapshotCommand} from '../../dist'
 
 addMatchImageSnapshotCommand()
