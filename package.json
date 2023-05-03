@@ -2,6 +2,7 @@
   "name": "@simonsmith/cypress-image-snapshot",
   "packageManager": "yarn@3.5.0",
   "scripts": {
+    "open": "run-s build cypress:open",
     "build": "run-s build:clean build:ts",
     "build:clean": "rm -rf dist",
     "build:ts": "tsc",
