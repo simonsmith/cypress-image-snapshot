@@ -1,10 +1,10 @@
 import {defineConfig} from 'cypress'
-import {addMatchImageSnapshotPlugin} from './dist'
+import {addImageSnapshotPlugin} from './dist/plugin'
 
 export default defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
-      addMatchImageSnapshotPlugin(on, config)
+      addImageSnapshotPlugin(on, config)
     },
   },
 })
