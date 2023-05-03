@@ -9,7 +9,7 @@
     "lint": "run-p -c 'lint:*'",
     "lint:ts": "tsc --noEmit",
     "lint:eslint": "eslint --ext .ts,.json .",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open --browser electron --e2e"
   },
   "devDependencies": {
     "@types/jest-image-snapshot": "^6.1.0",
