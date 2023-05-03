@@ -1,5 +1,5 @@
 import {defineConfig} from 'cypress'
-import {addMatchImageSnapshotPlugin} from './src'
+import {addMatchImageSnapshotPlugin} from './dist'
 
 export default defineConfig({
   e2e: {
