@@ -8,9 +8,10 @@
     "lint": "run-p -c 'lint:*'",
     "lint:ts": "tsc --noEmit",
     "lint:eslint": "eslint --ext .ts,.json .",
-		"cypress:open": "cypress open"
+    "cypress:open": "cypress open"
   },
   "devDependencies": {
+    "@types/jest-image-snapshot": "^6.1.0",
     "@types/node": "^18.15.11",
     "@typescript-eslint/eslint-plugin": "^5.58.0",
     "@typescript-eslint/parser": "^5.58.0",
@@ -24,5 +25,8 @@
   },
   "peerDependencies": {
     "cypress": ">10.0.0"
+  },
+  "dependencies": {
+    "jest-image-snapshot": "^6.1.0"
   }
 }
