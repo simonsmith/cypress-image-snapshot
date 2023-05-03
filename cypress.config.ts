@@ -1,15 +1,10 @@
 import {defineConfig} from 'cypress'
+import {addMatchImageSnapshotPlugin} from './src'
 
 export default defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
-      on('task', {
-        simon(arg) {
-          return Promise.resolve(arg).then((res) => {
-            return res
-          })
-        },
-      })
+      addMatchImageSnapshotPlugin(on, config)
     },
   },
 })

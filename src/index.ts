@@ -1,29 +1,14 @@
-declare global {
-  namespace Cypress {
-    interface Chainable {
-      matchImageSnapshot(
-        options?: AddMatchImageSnapshotCommandOptions,
-      ): Chainable
-    }
-  }
-}
+import {runImageDiffAfterScreenshot} from './task'
+import {matchImageSnapshot} from './command'
 
-type AddMatchImageSnapshotCommandOptions = {
-  foo?: string
-}
-
-type Subject =
-  | void
-  | Document
-  | Window
-  | Cypress.JQueryWithSelector<HTMLElement>
-
-const matchImageSnapshot = (
-  subject: Subject,
-  options?: AddMatchImageSnapshotCommandOptions,
+/**
+ * @type {Cypress.PluginConfig}
+ */
+export const addMatchImageSnapshotPlugin = (
+  on: Cypress.PluginEvents,
+  config: Cypress.PluginConfigOptions,
 ) => {
-  console.log('subject', subject)
-  return cy.wrap(subject)
+  on('after:screenshot', runImageDiffAfterScreenshot)
 }
 
 export const addMatchImageSnapshotCommand = () => {
