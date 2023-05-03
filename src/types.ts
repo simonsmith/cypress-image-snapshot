@@ -3,7 +3,8 @@ import type {MatchImageSnapshotOptions} from 'jest-image-snapshot'
 declare global {
   namespace Cypress {
     interface Chainable {
-      matchImageSnapshot(options?: SnapshotOptions): Chainable
+      matchImageSnapshot(nameOrOptions?: SnapshotOptions | string): Chainable
+      matchImageSnapshot(name: string, options: SnapshotOptions): Chainable
     }
   }
 }
