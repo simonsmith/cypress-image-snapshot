@@ -28,6 +28,7 @@
     "cypress": ">10.0.0"
   },
   "dependencies": {
-    "jest-image-snapshot": "^6.1.0"
+    "jest-image-snapshot": "^6.1.0",
+    "just-extend": "^6.2.0"
   }
 }
