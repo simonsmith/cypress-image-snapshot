@@ -33,6 +33,7 @@ const matchImageSnapshot = (
   )
 
   const elementToScreenshot = cy.wrap(subject)
+  cy.task('matchImageSnapshotOptions', options)
 
   elementToScreenshot.screenshot(
     getScreenshotFilename(filename),

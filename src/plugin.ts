@@ -1,3 +1,5 @@
+import type {SnapshotOptions} from './types'
+
 /**
  * @type {Cypress.PluginConfig}
  */
@@ -6,6 +8,16 @@ export const addImageSnapshotPlugin = (
   config: Cypress.PluginConfigOptions,
 ) => {
   on('after:screenshot', runImageDiffAfterScreenshot)
+  on('task', {
+    matchImageSnapshotOptions: setOptions,
+  })
+}
+
+let options: SnapshotOptions = {}
+
+const setOptions = (commandOptions: SnapshotOptions) => {
+  options = commandOptions
+  return null
 }
 
 const runImageDiffAfterScreenshot = (
