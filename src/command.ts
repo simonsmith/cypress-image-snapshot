@@ -27,32 +27,46 @@ const matchImageSnapshot = (
   nameOrCommandOptions: SnapshotOptions | string,
   commandOptions?: SnapshotOptions,
 ) => {
-  const {fileName, options} = getNameAndOptions(
+  const {filename, options} = getNameAndOptions(
     nameOrCommandOptions,
     commandOptions,
   )
-  console.log(fileName, options)
-  return cy.wrap(subject)
+
+  const elementToScreenshot = cy.wrap(subject)
+
+  elementToScreenshot.screenshot(
+    getScreenshotFilename(filename),
+    options.cypressScreenshotOptions,
+  )
+
+  return elementToScreenshot
 }
 
 const getNameAndOptions = (
   nameOrCommandOptions: SnapshotOptions | string,
   commandOptions?: SnapshotOptions,
 ) => {
-  let fileName: string | undefined
+  let filename: string | undefined
   let options: SnapshotOptions = extend({}, defaultOptions)
   if (typeof nameOrCommandOptions === 'string' && commandOptions) {
-    fileName = nameOrCommandOptions
+    filename = nameOrCommandOptions
     options = extend(true, {}, defaultOptions, commandOptions)
   }
   if (typeof nameOrCommandOptions === 'string') {
-    fileName = nameOrCommandOptions
+    filename = nameOrCommandOptions
   }
   if (typeof nameOrCommandOptions === 'object') {
     options = extend(true, {}, defaultOptions, nameOrCommandOptions)
   }
   return {
-    fileName,
+    filename,
     options,
   }
+}
+
+const getScreenshotFilename = (filename: string | undefined) => {
+  if (filename) {
+    return filename
+  }
+  return Cypress.currentTest.titlePath.join(' -- ')
 }
