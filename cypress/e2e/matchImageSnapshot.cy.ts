@@ -1,16 +1,7 @@
-describe('template spec', () => {
-  it('passes', () => {
-    cy.visit('https://example.cypress.io').matchImageSnapshot()
-    cy.matchImageSnapshot({
-      jestImageSnapshotOptions: {
-        failureThreshold: 100,
-      },
-    })
-    cy.matchImageSnapshot('spec name')
-    cy.matchImageSnapshot('filename', {
-      jestImageSnapshotOptions: {
-        failureThreshold: 1,
-      },
-    })
-  })
+before(() => {
+  cy.visit('http://localhost:9001')
+})
+
+it('matches snapshot with defaults', () => {
+  cy.matchImageSnapshot()
 })

@@ -1,0 +1,8 @@
+.container {
+  max-width: 900px;
+  margin: 40px auto 0;
+}
+
+.test-title {
+  text-align: center;
+}

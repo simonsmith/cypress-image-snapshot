@@ -2,14 +2,15 @@
   "name": "@simonsmith/cypress-image-snapshot",
   "packageManager": "yarn@3.5.0",
   "scripts": {
-    "open": "run-s build cypress:open",
+    "test:open": "npm-run-all build --parallel cypress:server cypress:open",
     "build": "run-s build:clean build:ts",
     "build:clean": "rm -rf dist",
     "build:ts": "tsc",
     "lint": "run-p -c 'lint:*'",
     "lint:ts": "tsc --noEmit",
     "lint:eslint": "eslint --ext .ts,.json .",
-    "cypress:open": "cypress open --browser electron --e2e"
+    "cypress:open": "cypress open --browser electron --e2e",
+    "cypress:server": "http-server -p 9001 -c-1 ./cypress/server"
   },
   "devDependencies": {
     "@types/jest-image-snapshot": "^6.1.0",
@@ -20,6 +21,7 @@
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "http-server": "^14.1.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.8.7",
     "typescript": "^5.0.4"
