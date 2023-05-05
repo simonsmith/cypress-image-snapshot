@@ -13,7 +13,7 @@ export const addImageSnapshotPlugin = (
   })
 }
 
-let options: SnapshotOptions = {}
+let options = {} as SnapshotOptions
 
 const setOptions = (commandOptions: SnapshotOptions) => {
   options = commandOptions

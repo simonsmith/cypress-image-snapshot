@@ -12,7 +12,11 @@ declare global {
 type CypressScreenshotOptions = Partial<Cypress.ScreenshotOptions>
 
 export type SnapshotOptions = {
-  foo?: string
+  screenshotsFolder: string
+  isUpdateSnapshots: boolean
+  isRequireSnapshots: boolean
+  isFailOnSnapshotDiff: boolean
+  specFileRelativeToRoot: string
   cypressScreenshotOptions?: CypressScreenshotOptions
   jestImageSnapshotOptions?: MatchImageSnapshotOptions
 }

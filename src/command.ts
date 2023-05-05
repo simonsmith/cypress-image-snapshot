@@ -11,12 +11,18 @@ export const addImageSnapshotCommand = () => {
   )
 }
 
-const screenshotsFolder = Cypress.config('screenshotsFolder')
+const screenshotsFolder =
+  Cypress.config('screenshotsFolder') || 'cypress/screenshots'
 const isUpdateSnapshots: boolean = Cypress.env('updateSnapshots') || false
 const isRequireSnapshots: boolean = Cypress.env('requireSnapshots') || false
 const isFailOnSnapshotDiff: boolean = Cypress.env('failOnSnapshotDiff') || false
 
 const defaultOptions: SnapshotOptions = {
+  screenshotsFolder,
+  isUpdateSnapshots,
+  isRequireSnapshots,
+  isFailOnSnapshotDiff,
+  specFileRelativeToRoot: Cypress.spec.relative,
   jestImageSnapshotOptions: {
     failureThreshold: 0.1,
   },
@@ -48,16 +54,26 @@ const getNameAndOptions = (
   commandOptions?: SnapshotOptions,
 ) => {
   let filename: string | undefined
-  let options: SnapshotOptions = extend({}, defaultOptions)
+  let options = extend({}, defaultOptions) as SnapshotOptions
   if (typeof nameOrCommandOptions === 'string' && commandOptions) {
     filename = nameOrCommandOptions
-    options = extend(true, {}, defaultOptions, commandOptions)
+    options = extend(
+      true,
+      {},
+      defaultOptions,
+      commandOptions,
+    ) as SnapshotOptions
   }
   if (typeof nameOrCommandOptions === 'string') {
     filename = nameOrCommandOptions
   }
   if (typeof nameOrCommandOptions === 'object') {
-    options = extend(true, {}, defaultOptions, nameOrCommandOptions)
+    options = extend(
+      true,
+      {},
+      defaultOptions,
+      nameOrCommandOptions,
+    ) as SnapshotOptions
   }
   return {
     filename,
