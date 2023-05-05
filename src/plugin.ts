@@ -1,4 +1,7 @@
-import type {SnapshotOptions} from './types'
+import fs from 'node:fs/promises'
+import path from 'node:path'
+import {diffImageToSnapshot} from 'jest-image-snapshot/src/diff-snapshot'
+import type {DiffSnapshotResult, SnapshotOptions} from './types'
 
 /**
  * @type {Cypress.PluginConfig}
@@ -20,8 +23,139 @@ const setOptions = (commandOptions: SnapshotOptions) => {
   return null
 }
 
-const runImageDiffAfterScreenshot = (
+const PNG_EXT = '.png'
+const SNAP_EXT = `.snap${PNG_EXT}`
+const DIFF_EXT = `.diff${PNG_EXT}`
+const DEFAULT_DIFF_DIR = '__diff_output__'
+
+let snapshotResult = {} as DiffSnapshotResult
+
+const runImageDiffAfterScreenshot = async (
   screenshotConfig: Cypress.ScreenshotDetails,
 ) => {
-  console.log(screenshotConfig)
+  const {path: screenshotPath} = screenshotConfig
+
+  // name of the screenshot without the Cypress suffixes for test failures
+  const snapshotIdentifier = screenshotConfig.name.replace(
+    / \(attempt [0-9]+\)/,
+    '',
+  )
+
+  const receivedImageBuffer = await fs.readFile(screenshotPath)
+  await fs.rm(screenshotPath)
+
+  const {customSnapshotsDir, customDiffDir} = options.jestImageSnapshotOptions
+  const {specFileName, screenshotsFolder, isUpdateSnapshots} = options
+
+  const snapshotsDir = customSnapshotsDir
+    ? path.join(process.cwd(), customSnapshotsDir, specFileName)
+    : path.join(screenshotsFolder, '..', 'snapshots', specFileName)
+
+  const snapshotIdentifierPath = path.join(
+    snapshotsDir,
+    `${snapshotIdentifier}${PNG_EXT}`,
+  )
+  const snapshotDotPath = path.join(
+    snapshotsDir,
+    `${snapshotIdentifier}${SNAP_EXT}`,
+  )
+
+  const diffDir = customDiffDir
+    ? path.join(process.cwd(), customDiffDir, specFileName)
+    : path.join(snapshotsDir, DEFAULT_DIFF_DIR)
+
+  const diffDotPath = path.join(diffDir, `${snapshotIdentifier}${DIFF_EXT}`)
+
+  log('options', options)
+  log('paths', {
+    snapshotsDir,
+    diffDir,
+    diffDotPath,
+    specFileName,
+    snapshotIdentifier,
+    snapshotIdentifierPath,
+    snapshotDotPath,
+  })
+
+  const isExist = await pathExists(snapshotDotPath)
+  if (isExist) {
+    log(`copy snapshotDotPath to snapshotIdentifierPath...`)
+    await fs.copyFile(snapshotDotPath, snapshotIdentifierPath)
+  }
+
+  snapshotResult = diffImageToSnapshot({
+    ...options.jestImageSnapshotOptions,
+    snapshotsDir,
+    diffDir,
+    receivedImageBuffer,
+    snapshotIdentifier,
+    updateSnapshot: isUpdateSnapshots,
+  })
+  log(
+    'result from diffImageToSnapshot',
+    (() => {
+      const {imgSrcString, ...rest} = snapshotResult
+      return rest
+    })(),
+  )
+
+  const {pass, added, updated, diffOutputPath} = snapshotResult
+
+  if (!pass && !added && !updated) {
+    log('image did not match')
+
+    log('copy diffOutputPath to diffDotPath')
+    await fs.copyFile(diffOutputPath, diffDotPath)
+
+    log('remove diffOutputPath')
+    await fs.rm(diffOutputPath)
+
+    log('remove snapshotIdentifierPath')
+    await fs.rm(snapshotIdentifierPath)
+
+    snapshotResult.diffOutputPath = diffDotPath
+
+    log(`screenshot write to ${diffDotPath}...`)
+    return {
+      path: diffDotPath,
+    }
+  }
+
+  if (pass) {
+    log('snapshot matches')
+  }
+  if (added) {
+    log('new snapshot generated')
+  }
+  if (updated) {
+    log('snapshot updated with new version')
+  }
+
+  log('copy snapshotIdentifierPath to snapshotDotPath')
+  await fs.copyFile(snapshotIdentifierPath, snapshotDotPath)
+
+  log('remove snapshotIdentifierPath')
+  await fs.rm(snapshotIdentifierPath)
+
+  snapshotResult.diffOutputPath = snapshotDotPath
+
+  log('screenshot write to snapshotDotPath')
+  return {
+    path: snapshotDotPath,
+  }
+}
+
+async function pathExists(path: string) {
+  try {
+    await fs.stat(path)
+    return true
+  } catch {
+    return false
+  }
+}
+
+const log = (...message: any) => {
+  if (options.isSnapshotDebug) {
+    console.log('matchImageSnapshot: ', ...message)
+  }
 }

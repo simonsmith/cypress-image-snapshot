@@ -9,7 +9,7 @@
     "lint": "run-p -c 'lint:*'",
     "lint:ts": "tsc --noEmit",
     "lint:eslint": "eslint --ext .ts,.json .",
-    "cypress:open": "cypress open --browser electron --e2e",
+    "cypress:open": "cypress open --env debugSnapshots=true --browser electron --e2e",
     "cypress:server": "http-server -p 9001 -c-1 ./cypress/server"
   },
   "devDependencies": {

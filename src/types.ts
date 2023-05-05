@@ -16,9 +16,10 @@ export type SnapshotOptions = {
   isUpdateSnapshots: boolean
   isRequireSnapshots: boolean
   isFailOnSnapshotDiff: boolean
-  specFileRelativeToRoot: string
-  cypressScreenshotOptions?: CypressScreenshotOptions
-  jestImageSnapshotOptions?: MatchImageSnapshotOptions
+  isSnapshotDebug: boolean
+  specFileName: string
+  cypressScreenshotOptions: CypressScreenshotOptions
+  jestImageSnapshotOptions: MatchImageSnapshotOptions
 }
 
 export type Subject =
@@ -26,3 +27,42 @@ export type Subject =
   | Document
   | Window
   | Cypress.JQueryWithSelector<HTMLElement>
+
+export type DiffSnapshotResult = {
+  added?: boolean
+  receivedSnapshotPath?: string
+  updated?: boolean
+  imgSrcString: string
+  imageDimensions: {
+    baselineHeight: number
+    baselineWidth: number
+    receivedWidth: number
+    receivedHeight: number
+  }
+  pass: boolean
+  diffSize: boolean
+  diffOutputPath: string
+  diffRatio: number
+  diffPixelCount: number
+}
+
+export type DiffSnapshotOptions = {
+  receivedImageBuffer: Buffer
+  snapshotIdentifier: string
+  snapshotsDir: string
+  storeReceivedOnFailure?: boolean
+  receivedDir?: string
+  diffDir?: string
+  updateSnapshot?: boolean
+  updatePassedSnapshot?: boolean
+  customDiffConfig?: Record<string, unknown>
+} & Pick<
+  MatchImageSnapshotOptions,
+  | 'comparisonMethod'
+  | 'blur'
+  | 'allowSizeMismatch'
+  | 'diffDirection'
+  | 'onlyDiff'
+  | 'failureThreshold'
+  | 'failureThresholdType'
+>

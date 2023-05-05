@@ -15,17 +15,22 @@ const screenshotsFolder =
   Cypress.config('screenshotsFolder') || 'cypress/screenshots'
 const isUpdateSnapshots: boolean = Cypress.env('updateSnapshots') || false
 const isRequireSnapshots: boolean = Cypress.env('requireSnapshots') || false
-const isFailOnSnapshotDiff: boolean = Cypress.env('failOnSnapshotDiff') || false
+const isSnapshotDebug: boolean = Cypress.env('debugSnapshots') || false
+const isFailOnSnapshotDiff: boolean =
+  typeof Cypress.env('failOnSnapshotDiff') === 'undefined'
 
 const defaultOptions: SnapshotOptions = {
   screenshotsFolder,
   isUpdateSnapshots,
   isRequireSnapshots,
   isFailOnSnapshotDiff,
-  specFileRelativeToRoot: Cypress.spec.relative,
+  isSnapshotDebug,
+  specFileName: Cypress.spec.name,
   jestImageSnapshotOptions: {
-    failureThreshold: 0.1,
+    failureThreshold: 0,
+    failureThresholdType: 'pixel',
   },
+  cypressScreenshotOptions: {},
 }
 
 const matchImageSnapshot = (
