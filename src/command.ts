@@ -11,16 +11,16 @@ export const addImageSnapshotCommand = () => {
   )
 }
 
+const screenshotsFolder = Cypress.config('screenshotsFolder')
+const isUpdateSnapshots: boolean = Cypress.env('updateSnapshots') || false
+const isRequireSnapshots: boolean = Cypress.env('requireSnapshots') || false
+const isFailOnSnapshotDiff: boolean = Cypress.env('failOnSnapshotDiff') || false
+
 const defaultOptions: SnapshotOptions = {
   jestImageSnapshotOptions: {
     failureThreshold: 0.1,
   },
 }
-
-const screenshotsFolder = Cypress.config('screenshotsFolder')
-const isUpdateSnapshots: boolean = Cypress.env('updateSnapshots') || false
-const isRequireSnapshots: boolean = Cypress.env('requireSnapshots') || false
-const isFailOnSnapshotDiff: boolean = Cypress.env('failOnSnapshotDiff') || false
 
 const matchImageSnapshot = (
   subject: Subject,
