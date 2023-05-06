@@ -1,4 +1,4 @@
-before(() => {
+beforeEach(() => {
   cy.visit('http://localhost:9001')
 })
 

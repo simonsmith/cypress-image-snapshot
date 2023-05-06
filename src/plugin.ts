@@ -2,25 +2,27 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import chalk from 'chalk'
 import {diffImageToSnapshot} from 'jest-image-snapshot/src/diff-snapshot'
-import {MATCH} from './constants'
+import {MATCH, RECORD} from './constants'
 import type {DiffSnapshotResult, SnapshotOptions} from './types'
 
 /**
  * @type {Cypress.PluginConfig}
  */
-export const addImageSnapshotPlugin = (
-  on: Cypress.PluginEvents,
-  config: Cypress.PluginConfigOptions,
-) => {
+export const addImageSnapshotPlugin = (on: Cypress.PluginEvents) => {
   on('after:screenshot', runImageDiffAfterScreenshot)
   on('task', {
     [MATCH]: setOptions,
+    [RECORD]: getSnapshotResult,
   })
 }
 
-let options = {} as SnapshotOptions
+// prevent the plugin running for general screenshots that aren't
+// triggered by `matchImageSnapshot`
+let isSnapshotActive = false
 
+let options = {} as SnapshotOptions
 const setOptions = (commandOptions: SnapshotOptions) => {
+  isSnapshotActive = true
   options = commandOptions
   return null
 }
@@ -31,11 +33,18 @@ const DIFF_EXT = `.diff${PNG_EXT}`
 const DEFAULT_DIFF_DIR = '__diff_output__'
 
 let snapshotResult = {} as DiffSnapshotResult
+const getSnapshotResult = () => {
+  isSnapshotActive = false
+  return snapshotResult
+}
 
 const runImageDiffAfterScreenshot = async (
   screenshotConfig: Cypress.ScreenshotDetails,
 ) => {
   const {path: screenshotPath} = screenshotConfig
+  if (!isSnapshotActive) {
+    return {path: screenshotPath}
+  }
 
   // name of the screenshot without the Cypress suffixes for test failures
   const snapshotName = screenshotConfig.name.replace(/ \(attempt [0-9]+\)/, '')
