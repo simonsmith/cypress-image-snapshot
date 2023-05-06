@@ -29,6 +29,7 @@ const defaultOptions: SnapshotOptions = {
   isUpdateSnapshots,
   isSnapshotDebug,
   specFileName: Cypress.spec.name,
+  currentTestTitle: '',
   failureThreshold: 0,
   failureThresholdType: 'pixel',
 }
@@ -49,7 +50,10 @@ const matchImageSnapshot = (
   )
 
   const elementToScreenshot = cy.wrap(subject)
-  cy.task(MATCH, options)
+  cy.task(MATCH, {
+    ...options,
+    currentTestTitle: Cypress.currentTest.title,
+  })
 
   const screenshotName = getScreenshotFilename(filename)
   elementToScreenshot.screenshot(screenshotName, options)

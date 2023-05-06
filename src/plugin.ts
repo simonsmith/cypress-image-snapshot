@@ -54,6 +54,7 @@ const runImageDiffAfterScreenshot = async (
 
   const {
     specFileName,
+    currentTestTitle,
     screenshotsFolder,
     isUpdateSnapshots,
     customSnapshotsDir,
@@ -76,6 +77,7 @@ const runImageDiffAfterScreenshot = async (
 
   const diffDotPath = path.join(diffDir, `${snapshotName}${DIFF_EXT}`)
 
+  logTestName(currentTestTitle)
   log('options', options)
   log('paths', {
     screenshotPath,
@@ -90,7 +92,6 @@ const runImageDiffAfterScreenshot = async (
 
   const isExist = await pathExists(snapshotDotPath)
   if (isExist) {
-    log(`copy snapshotDotPath to snapshotIdentifierPath...`)
     await fs.copyFile(snapshotDotPath, snapshotNameFullPath)
   }
 
@@ -115,13 +116,8 @@ const runImageDiffAfterScreenshot = async (
   if (!pass && !added && !updated) {
     log('image did not match')
 
-    log('copy diffOutputPath to diffDotPath')
     await fs.copyFile(diffOutputPath, diffDotPath)
-
-    log('remove diffOutputPath')
     await fs.rm(diffOutputPath)
-
-    log('remove snapshotIdentifierPath')
     await fs.rm(snapshotNameFullPath)
 
     snapshotResult.diffOutputPath = diffDotPath
@@ -142,10 +138,7 @@ const runImageDiffAfterScreenshot = async (
     log('snapshot updated with new version')
   }
 
-  log('copy snapshotIdentifierPath to snapshotDotPath')
   await fs.copyFile(snapshotNameFullPath, snapshotDotPath)
-
-  log('remove snapshotIdentifierPath')
   await fs.rm(snapshotNameFullPath)
 
   snapshotResult.diffOutputPath = snapshotDotPath
@@ -169,4 +162,8 @@ const log = (...message: any) => {
   if (options.isSnapshotDebug) {
     console.log(chalk.blueBright.bold('matchImageSnapshot: '), ...message)
   }
+}
+
+const logTestName = (name: string) => {
+  log(chalk.yellow.bold(name))
 }

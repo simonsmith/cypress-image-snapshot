@@ -22,6 +22,7 @@ export type SnapshotOptions = {
   isUpdateSnapshots: boolean
   isSnapshotDebug: boolean
   specFileName: string
+  currentTestTitle: string
 } & CypressScreenshotOptions &
   MatchImageSnapshotOptions
 
