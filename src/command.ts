@@ -24,14 +24,10 @@ const screenshotsFolder =
 const isUpdateSnapshots: boolean = Cypress.env('updateSnapshots') || false
 const isRequireSnapshots: boolean = Cypress.env('requireSnapshots') || false
 const isSnapshotDebug: boolean = Cypress.env('debugSnapshots') || false
-const isFailOnSnapshotDiff: boolean =
-  typeof Cypress.env('failOnSnapshotDiff') === 'undefined' || false
 
 const defaultOptions: SnapshotOptions = {
   screenshotsFolder,
   isUpdateSnapshots,
-  isRequireSnapshots,
-  isFailOnSnapshotDiff,
   isSnapshotDebug,
   specFileName: Cypress.spec.name,
   failureThreshold: 0,
@@ -43,6 +39,10 @@ const matchImageSnapshot = (
   nameOrCommandOptions: CypressImageSnapshotOptions | string,
   commandOptions?: CypressImageSnapshotOptions,
 ) => {
+  // access the env here so that it can be overridden in tests
+  const isFailOnSnapshotDiff: boolean =
+    typeof Cypress.env('failOnSnapshotDiff') === 'undefined' || false
+
   const {filename, options} = getNameAndOptions(
     nameOrCommandOptions,
     commandOptions,

@@ -20,8 +20,6 @@ type CypressScreenshotOptions = Partial<Cypress.ScreenshotOptions>
 export type SnapshotOptions = {
   screenshotsFolder: string
   isUpdateSnapshots: boolean
-  isRequireSnapshots: boolean
-  isFailOnSnapshotDiff: boolean
   isSnapshotDebug: boolean
   specFileName: string
 } & CypressScreenshotOptions &
