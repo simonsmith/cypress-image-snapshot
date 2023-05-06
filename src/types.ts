@@ -3,14 +3,20 @@ import type {MatchImageSnapshotOptions} from 'jest-image-snapshot'
 declare global {
   namespace Cypress {
     interface Chainable {
-      matchImageSnapshot(nameOrOptions?: SnapshotOptions | string): Chainable
-      matchImageSnapshot(name: string, options: SnapshotOptions): Chainable
+      matchImageSnapshot(
+        nameOrCommandOptions?: CypressImageSnapshotOptions | string,
+      ): Chainable<DiffSnapshotResult>
+      matchImageSnapshot(
+        name: string,
+        commandOptions: CypressImageSnapshotOptions,
+      ): Chainable<DiffSnapshotResult>
     }
   }
 }
 
 type CypressScreenshotOptions = Partial<Cypress.ScreenshotOptions>
 
+// The options that are passed around internally from command to plugin
 export type SnapshotOptions = {
   screenshotsFolder: string
   isUpdateSnapshots: boolean
@@ -18,9 +24,17 @@ export type SnapshotOptions = {
   isFailOnSnapshotDiff: boolean
   isSnapshotDebug: boolean
   specFileName: string
-  cypressScreenshotOptions: CypressScreenshotOptions
-  jestImageSnapshotOptions: MatchImageSnapshotOptions
-}
+} & CypressScreenshotOptions &
+  MatchImageSnapshotOptions
+
+// The options that are exposed to the user via `matchImageSnapshot`
+// Prevents the private properties above from showing up in autocomplete
+// Merges both Cypress and jest-image-snapshot options together. Not ideal
+// if one day they choose a clashing key, but this way it keeps the public
+// API non breaking
+export type CypressImageSnapshotOptions = Partial<
+  CypressScreenshotOptions & MatchImageSnapshotOptions
+>
 
 export type Subject =
   | void

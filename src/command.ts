@@ -1,6 +1,11 @@
 import extend from 'just-extend'
 import {MATCH, RECORD} from './constants'
-import type {DiffSnapshotResult, SnapshotOptions, Subject} from './types'
+import type {
+  CypressImageSnapshotOptions,
+  DiffSnapshotResult,
+  SnapshotOptions,
+  Subject,
+} from './types'
 
 export const addImageSnapshotCommand = () => {
   Cypress.Commands.add(
@@ -29,17 +34,14 @@ const defaultOptions: SnapshotOptions = {
   isFailOnSnapshotDiff,
   isSnapshotDebug,
   specFileName: Cypress.spec.name,
-  jestImageSnapshotOptions: {
-    failureThreshold: 0,
-    failureThresholdType: 'pixel',
-  },
-  cypressScreenshotOptions: {},
+  failureThreshold: 0,
+  failureThresholdType: 'pixel',
 }
 
 const matchImageSnapshot = (
   subject: Subject,
-  nameOrCommandOptions: SnapshotOptions | string,
-  commandOptions?: SnapshotOptions,
+  nameOrCommandOptions: CypressImageSnapshotOptions | string,
+  commandOptions?: CypressImageSnapshotOptions,
 ) => {
   const {filename, options} = getNameAndOptions(
     nameOrCommandOptions,
@@ -49,10 +51,8 @@ const matchImageSnapshot = (
   const elementToScreenshot = cy.wrap(subject)
   cy.task(MATCH, options)
 
-  elementToScreenshot.screenshot(
-    getScreenshotFilename(filename),
-    options.cypressScreenshotOptions,
-  )
+  const screenshotName = getScreenshotFilename(filename)
+  elementToScreenshot.screenshot(screenshotName, options)
 
   return cy.task<DiffSnapshotResult>(RECORD).then((snapshotResult) => {
     const {
@@ -67,7 +67,7 @@ const matchImageSnapshot = (
     } = snapshotResult
 
     if (added && isRequireSnapshots) {
-      throw new Error(`New snapshot ${name} was added, but 'requireSnapshots' was set to true.
+      throw new Error(`New snapshot ${screenshotName} was added, but 'requireSnapshots' was set to true.
             This is likely because this test was run in a CI environment in which snapshots should already be committed.`)
     }
 
@@ -88,26 +88,20 @@ const matchImageSnapshot = (
 }
 
 const getNameAndOptions = (
-  nameOrCommandOptions: SnapshotOptions | string,
-  commandOptions?: SnapshotOptions,
+  nameOrCommandOptions: CypressImageSnapshotOptions | string,
+  commandOptions?: CypressImageSnapshotOptions,
 ) => {
   let filename: string | undefined
   let options = extend({}, defaultOptions) as SnapshotOptions
   if (typeof nameOrCommandOptions === 'string' && commandOptions) {
     filename = nameOrCommandOptions
-    options = extend(
-      true,
-      {},
-      defaultOptions,
-      commandOptions,
-    ) as SnapshotOptions
+    options = extend({}, defaultOptions, commandOptions) as SnapshotOptions
   }
   if (typeof nameOrCommandOptions === 'string') {
     filename = nameOrCommandOptions
   }
   if (typeof nameOrCommandOptions === 'object') {
     options = extend(
-      true,
       {},
       defaultOptions,
       nameOrCommandOptions,

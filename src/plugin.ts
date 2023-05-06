@@ -52,8 +52,13 @@ const runImageDiffAfterScreenshot = async (
   const receivedImageBuffer = await fs.readFile(screenshotPath)
   await fs.rm(screenshotPath)
 
-  const {customSnapshotsDir, customDiffDir} = options.jestImageSnapshotOptions
-  const {specFileName, screenshotsFolder, isUpdateSnapshots} = options
+  const {
+    specFileName,
+    screenshotsFolder,
+    isUpdateSnapshots,
+    customSnapshotsDir,
+    customDiffDir,
+  } = options
 
   const snapshotsDir = customSnapshotsDir
     ? path.join(process.cwd(), customSnapshotsDir, specFileName)
@@ -90,7 +95,7 @@ const runImageDiffAfterScreenshot = async (
   }
 
   snapshotResult = diffImageToSnapshot({
-    ...options.jestImageSnapshotOptions,
+    ...options,
     snapshotsDir,
     diffDir,
     receivedImageBuffer,
