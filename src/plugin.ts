@@ -2,6 +2,7 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import chalk from 'chalk'
 import {diffImageToSnapshot} from 'jest-image-snapshot/src/diff-snapshot'
+import {MATCH} from './constants'
 import type {DiffSnapshotResult, SnapshotOptions} from './types'
 
 /**
@@ -13,7 +14,7 @@ export const addImageSnapshotPlugin = (
 ) => {
   on('after:screenshot', runImageDiffAfterScreenshot)
   on('task', {
-    matchImageSnapshotOptions: setOptions,
+    [MATCH]: setOptions,
   })
 }
 

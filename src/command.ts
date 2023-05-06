@@ -1,5 +1,6 @@
-import type {SnapshotOptions, Subject} from './types'
 import extend from 'just-extend'
+import {MATCH} from './constants'
+import type {SnapshotOptions, Subject} from './types'
 
 export const addImageSnapshotCommand = () => {
   Cypress.Commands.add(
@@ -44,7 +45,7 @@ const matchImageSnapshot = (
   )
 
   const elementToScreenshot = cy.wrap(subject)
-  cy.task('matchImageSnapshotOptions', options)
+  cy.task(MATCH, options)
 
   elementToScreenshot.screenshot(
     getScreenshotFilename(filename),
