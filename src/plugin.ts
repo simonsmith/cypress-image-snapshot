@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
+import chalk from 'chalk'
 import {diffImageToSnapshot} from 'jest-image-snapshot/src/diff-snapshot'
 import type {DiffSnapshotResult, SnapshotOptions} from './types'
 
@@ -36,10 +37,7 @@ const runImageDiffAfterScreenshot = async (
   const {path: screenshotPath} = screenshotConfig
 
   // name of the screenshot without the Cypress suffixes for test failures
-  const snapshotIdentifier = screenshotConfig.name.replace(
-    / \(attempt [0-9]+\)/,
-    '',
-  )
+  const snapshotName = screenshotConfig.name.replace(/ \(attempt [0-9]+\)/, '')
 
   const receivedImageBuffer = await fs.readFile(screenshotPath)
   await fs.rm(screenshotPath)
@@ -51,36 +49,34 @@ const runImageDiffAfterScreenshot = async (
     ? path.join(process.cwd(), customSnapshotsDir, specFileName)
     : path.join(screenshotsFolder, '..', 'snapshots', specFileName)
 
-  const snapshotIdentifierPath = path.join(
+  const snapshotNameFullPath = path.join(
     snapshotsDir,
-    `${snapshotIdentifier}${PNG_EXT}`,
+    `${snapshotName}${PNG_EXT}`,
   )
-  const snapshotDotPath = path.join(
-    snapshotsDir,
-    `${snapshotIdentifier}${SNAP_EXT}`,
-  )
+  const snapshotDotPath = path.join(snapshotsDir, `${snapshotName}${SNAP_EXT}`)
 
   const diffDir = customDiffDir
     ? path.join(process.cwd(), customDiffDir, specFileName)
     : path.join(snapshotsDir, DEFAULT_DIFF_DIR)
 
-  const diffDotPath = path.join(diffDir, `${snapshotIdentifier}${DIFF_EXT}`)
+  const diffDotPath = path.join(diffDir, `${snapshotName}${DIFF_EXT}`)
 
   log('options', options)
   log('paths', {
+    screenshotPath,
     snapshotsDir,
     diffDir,
     diffDotPath,
     specFileName,
-    snapshotIdentifier,
-    snapshotIdentifierPath,
+    snapshotName,
+    snapshotNameFullPath,
     snapshotDotPath,
   })
 
   const isExist = await pathExists(snapshotDotPath)
   if (isExist) {
     log(`copy snapshotDotPath to snapshotIdentifierPath...`)
-    await fs.copyFile(snapshotDotPath, snapshotIdentifierPath)
+    await fs.copyFile(snapshotDotPath, snapshotNameFullPath)
   }
 
   snapshotResult = diffImageToSnapshot({
@@ -88,7 +84,7 @@ const runImageDiffAfterScreenshot = async (
     snapshotsDir,
     diffDir,
     receivedImageBuffer,
-    snapshotIdentifier,
+    snapshotIdentifier: snapshotName,
     updateSnapshot: isUpdateSnapshots,
   })
   log(
@@ -111,7 +107,7 @@ const runImageDiffAfterScreenshot = async (
     await fs.rm(diffOutputPath)
 
     log('remove snapshotIdentifierPath')
-    await fs.rm(snapshotIdentifierPath)
+    await fs.rm(snapshotNameFullPath)
 
     snapshotResult.diffOutputPath = diffDotPath
 
@@ -132,10 +128,10 @@ const runImageDiffAfterScreenshot = async (
   }
 
   log('copy snapshotIdentifierPath to snapshotDotPath')
-  await fs.copyFile(snapshotIdentifierPath, snapshotDotPath)
+  await fs.copyFile(snapshotNameFullPath, snapshotDotPath)
 
   log('remove snapshotIdentifierPath')
-  await fs.rm(snapshotIdentifierPath)
+  await fs.rm(snapshotNameFullPath)
 
   snapshotResult.diffOutputPath = snapshotDotPath
 
