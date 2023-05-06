@@ -9,3 +9,4 @@ node_modules
 dist
 cypress/screenshots
 cypress/videos
+cypress/**/__diff_output__

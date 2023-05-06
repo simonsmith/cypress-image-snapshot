@@ -22,7 +22,6 @@ const COMMAND_NAME = 'cypress-image-snapshot'
 const screenshotsFolder =
   Cypress.config('screenshotsFolder') || 'cypress/screenshots'
 const isUpdateSnapshots: boolean = Cypress.env('updateSnapshots') || false
-const isRequireSnapshots: boolean = Cypress.env('requireSnapshots') || false
 const isSnapshotDebug: boolean = Cypress.env('debugSnapshots') || false
 
 const defaultOptions: SnapshotOptions = {
@@ -42,6 +41,7 @@ const matchImageSnapshot = (
   // access the env here so that it can be overridden in tests
   const isFailOnSnapshotDiff: boolean =
     typeof Cypress.env('failOnSnapshotDiff') === 'undefined' || false
+  const isRequireSnapshots: boolean = Cypress.env('requireSnapshots') || false
 
   const {filename, options} = getNameAndOptions(
     nameOrCommandOptions,
