@@ -2,7 +2,8 @@
   "name": "@simonsmith/cypress-image-snapshot",
   "packageManager": "yarn@3.5.0",
   "scripts": {
-    "test:open": "npm-run-all build --parallel cypress:server cypress:open",
+    "test:open": "npm-run-all build --parallel cypress:open cypress:server",
+    "test:run": "npm-run-all build --parallel cypress:run cypress:server-bg ",
     "build": "run-s build:clean build:ts",
     "build:clean": "rm -rf dist",
     "build:ts": "tsc",
@@ -10,7 +11,9 @@
     "lint:ts": "tsc --noEmit",
     "lint:eslint": "eslint --ext .ts,.json .",
     "cypress:open": "cypress open --env debugSnapshots=true --browser electron --e2e",
-    "cypress:server": "http-server -p 9001 -c-1 ./cypress/server"
+    "cypress:run": "cypress run --env debugSnapshots=true --browser electron",
+    "cypress:server": "http-server -p 9001 -c-1 ./cypress/server",
+    "cypress:server-bg": "yarn cypress:server > http.log 2>&1 &"
   },
   "devDependencies": {
     "@types/jest-image-snapshot": "^6.1.0",

@@ -3,8 +3,9 @@ import {addImageSnapshotPlugin} from './dist/plugin'
 
 export default defineConfig({
   e2e: {
-    setupNodeEvents(on, config) {
-      addImageSnapshotPlugin(on, config)
+    video: false,
+    setupNodeEvents(on) {
+      addImageSnapshotPlugin(on)
     },
   },
 })
