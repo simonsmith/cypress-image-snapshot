@@ -71,8 +71,14 @@ const matchImageSnapshot = (
     } = snapshotResult
 
     if (added && isRequireSnapshots) {
-      throw new Error(`New snapshot ${screenshotName} was added, but 'requireSnapshots' was set to true.
-            This is likely because this test was run in a CI environment in which snapshots should already be committed.`)
+      const message = `New snapshot: '${screenshotName}' was added, but 'requireSnapshots' was set to true.
+            This is likely because this test was run in a CI environment in which snapshots should already be committed.`
+      if (isFailOnSnapshotDiff) {
+        throw new Error(message)
+      } else {
+        Cypress.log({name: COMMAND_NAME, message})
+        return
+      }
     }
 
     if (!pass && !added && !updated) {

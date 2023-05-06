@@ -47,11 +47,12 @@ describe(
   {
     env: {
       requireSnapshots: true,
+      failOnSnapshotDiff: false,
     },
   },
   () => {
     it('logs out error when new image is added', () => {
-      cy.matchImageSnapshot()
+      cy.matchImageSnapshot('requireSnapshots env value')
     })
   },
 )
