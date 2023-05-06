@@ -152,6 +152,6 @@ async function pathExists(path: string) {
 
 const log = (...message: any) => {
   if (options.isSnapshotDebug) {
-    console.log('matchImageSnapshot: ', ...message)
+    console.log(chalk.blueBright.bold('matchImageSnapshot: '), ...message)
   }
 }
