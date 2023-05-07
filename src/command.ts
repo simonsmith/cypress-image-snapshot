@@ -23,6 +23,10 @@ const defaultOptions: SnapshotOptions = {
   failureThresholdType: 'pixel',
 }
 
+/**
+ * Add this function to your `supportFile` for e2e/component
+ * Accepts options that are used for all instances of `toMatchSnapshot`
+ */
 export const addMatchImageSnapshotCommand = (
   defaultOptionsOverrides: CypressImageSnapshotOptions = {},
 ) => {

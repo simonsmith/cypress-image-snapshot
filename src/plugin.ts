@@ -6,6 +6,9 @@ import {MATCH, RECORD} from './constants'
 import type {DiffSnapshotResult, SnapshotOptions} from './types'
 
 /**
+ * Add this function in `setupNodeEvents` inside cypress.config.ts
+ *
+ * Required
  * @type {Cypress.PluginConfig}
  */
 export const addMatchImageSnapshotPlugin = (on: Cypress.PluginEvents) => {
