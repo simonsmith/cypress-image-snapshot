@@ -13,7 +13,8 @@
     "cypress:open": "cypress open --env debugSnapshots=true --browser electron --e2e",
     "cypress:run": "cypress run --env debugSnapshots=true --browser electron",
     "cypress:server": "http-server -p 9001 -c-1 ./cypress/server",
-    "cypress:server-bg": "yarn cypress:server > http.log 2>&1 &"
+    "cypress:server-bg": "yarn cypress:server > http.log 2>&1 &",
+    "doc": "doctoc README.md --github --notitle"
   },
   "devDependencies": {
     "@types/jest-image-snapshot": "^6.1.0",
@@ -21,6 +22,7 @@
     "@typescript-eslint/eslint-plugin": "^5.58.0",
     "@typescript-eslint/parser": "^5.58.0",
     "cypress": "^12.9.0",
+    "doctoc": "^2.2.1",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
