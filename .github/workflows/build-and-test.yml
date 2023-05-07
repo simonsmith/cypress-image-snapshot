@@ -2,7 +2,7 @@ name: build-and-test
 run-name: Builds plugin and runs Cypress tests
 on: [push]
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -10,5 +10,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-      - run: yarn install --frozen-lockfile
+      - run: corepack prepare yarn@3.5.0 --activate
+      - run: yarn set version 3.5.0
+      - run: yarn install --immutable
       - run: yarn lint
