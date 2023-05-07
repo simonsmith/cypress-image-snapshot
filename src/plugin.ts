@@ -161,7 +161,7 @@ async function pathExists(path: string) {
   }
 }
 
-const log = (...message: any) => {
+const log = (...message: any) => { // eslint-disable-line
   if (options.isSnapshotDebug) {
     console.log(chalk.blueBright.bold('matchImageSnapshot: '), ...message)
   }
