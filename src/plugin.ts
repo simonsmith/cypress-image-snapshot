@@ -8,7 +8,7 @@ import type {DiffSnapshotResult, SnapshotOptions} from './types'
 /**
  * @type {Cypress.PluginConfig}
  */
-export const addImageSnapshotPlugin = (on: Cypress.PluginEvents) => {
+export const addMatchImageSnapshotPlugin = (on: Cypress.PluginEvents) => {
   on('after:screenshot', runImageDiffAfterScreenshot)
   on('task', {
     [MATCH]: setOptions,
