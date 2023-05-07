@@ -17,8 +17,12 @@
     "doc": "doctoc README.md --github --notitle"
   },
   "devDependencies": {
+    "@types/eslint": "^8.37.0",
+    "@types/eslint-config-prettier": "^6.11.0",
+    "@types/jest": "^29.5.1",
     "@types/jest-image-snapshot": "^6.1.0",
     "@types/node": "^18.15.11",
+    "@types/prettier": "^2.7.2",
     "@typescript-eslint/eslint-plugin": "^5.58.0",
     "@typescript-eslint/parser": "^5.58.0",
     "cypress": "^12.9.0",

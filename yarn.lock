@@ -205,8 +205,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@simonsmith/cypress-image-snapshot@workspace:."
   dependencies:
+    "@types/eslint": ^8.37.0
+    "@types/eslint-config-prettier": ^6.11.0
+    "@types/jest": ^29.5.1
     "@types/jest-image-snapshot": ^6.1.0
     "@types/node": ^18.15.11
+    "@types/prettier": ^2.7.2
     "@typescript-eslint/eslint-plugin": ^5.58.0
     "@typescript-eslint/parser": ^5.58.0
     chalk: ^4.1.2
@@ -257,6 +261,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/eslint-config-prettier@npm:^6.11.0":
+  version: 6.11.0
+  resolution: "@types/eslint-config-prettier@npm:6.11.0"
+  checksum: b1e7a0e4fc260f48464676676e36c9e7e261ab580f69625c592d32c772348b77b613df79f66d39ebfd4ada86ff3cebb829f5f18d9d1405d3acecc7bc6fc35c86
+  languageName: node
+  linkType: hard
+
+"@types/eslint@npm:^8.37.0":
+  version: 8.37.0
+  resolution: "@types/eslint@npm:8.37.0"
+  dependencies:
+    "@types/estree": "*"
+    "@types/json-schema": "*"
+  checksum: 06d3b3fba12004294591b5c7a52e3cec439472195da54e096076b1f2ddfbb8a445973b9681046dd530a6ac31eca502f635abc1e3ce37d03513089358e6f822ee
+  languageName: node
+  linkType: hard
+
+"@types/estree@npm:*":
+  version: 1.0.1
+  resolution: "@types/estree@npm:1.0.1"
+  checksum: e9aa175eacb797216fafce4d41e8202c7a75555bc55232dee0f9903d7171f8f19f0ae7d5191bb1a88cb90e65468be508c0df850a9fb81b4433b293a5a749899d
+  languageName: node
+  linkType: hard
+
 "@types/istanbul-lib-coverage@npm:*, @types/istanbul-lib-coverage@npm:^2.0.0":
   version: 2.0.4
   resolution: "@types/istanbul-lib-coverage@npm:2.0.4"
@@ -293,7 +321,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:*":
+"@types/jest@npm:*, @types/jest@npm:^29.5.1":
   version: 29.5.1
   resolution: "@types/jest@npm:29.5.1"
   dependencies:
@@ -303,7 +331,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/json-schema@npm:^7.0.9":
+"@types/json-schema@npm:*, @types/json-schema@npm:^7.0.9":
   version: 7.0.11
   resolution: "@types/json-schema@npm:7.0.11"
   checksum: 527bddfe62db9012fccd7627794bd4c71beb77601861055d87e3ee464f2217c85fca7a4b56ae677478367bbd248dbde13553312b7d4dbc702a2f2bbf60c4018d
@@ -339,6 +367,13 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: 8920c3b7df22851ad69192fb7637206cb8f7dc73520f602202e36dd6f6b7701a4b56746175e7d7391ed9dc2c636d4d9bc5d7bd26fc3f1b11df1a63fb86418b91
+  languageName: node
+  linkType: hard
+
+"@types/prettier@npm:^2.7.2":
+  version: 2.7.2
+  resolution: "@types/prettier@npm:2.7.2"
+  checksum: b47d76a5252265f8d25dd2fe2a5a61dc43ba0e6a96ffdd00c594cb4fd74c1982c2e346497e3472805d97915407a09423804cc2110a0b8e1b22cffcab246479b7
   languageName: node
   linkType: hard
 
