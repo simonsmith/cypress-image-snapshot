@@ -4,7 +4,7 @@ description: 'Set yarn version and install'
 runs:
   using: composite
   steps:
-    - name: yarn install
+    - name: install node
       uses: actions/setup-node@v3
       with:
         node-version: '18'
@@ -12,7 +12,7 @@ runs:
       shell: bash
     - run: yarn set version 3.5.0
       shell: bash
-    - name: yarn install (cache)
+    - name: yarn install
       uses: ./.github/actions/yarn-nm-install
       with:
         enable-corepack: false

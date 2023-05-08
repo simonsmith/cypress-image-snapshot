@@ -11,6 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: yarn install (cache)
+      - name: yarn install
         uses: ./.github/actions/yarn-nm-install
       - run: yarn lint
