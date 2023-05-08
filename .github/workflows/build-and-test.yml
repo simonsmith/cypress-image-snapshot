@@ -1,16 +1,16 @@
 name: build-and-test
-run-name: Builds plugin and runs Cypress tests
 on: [push]
 jobs:
-  lint:
+  install:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: "use nodejs 18"
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      - run: corepack prepare yarn@3.5.0 --activate
-      - run: yarn set version 3.5.0
-      - run: yarn install --immutable
+      - uses: './.github/actions/install'
+  lint:
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: yarn install (cache)
+        uses: ./.github/actions/yarn-nm-install
       - run: yarn lint
