@@ -2,6 +2,8 @@
 
 Cypress Image Snapshot binds [jest-image-snapshot](https://github.com/americanexpress/jest-image-snapshot)'s image diffing logic to [Cypress.io](https://cypress.io) commands.
 
+[![build-and-test](https://github.com/simonsmith/cypress-image-snapshot2/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/simonsmith/cypress-image-snapshot2/actions/workflows/build-and-test.yml)
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
