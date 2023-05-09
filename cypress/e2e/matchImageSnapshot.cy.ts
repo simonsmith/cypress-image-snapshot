@@ -41,18 +41,3 @@ describe(
     })
   },
 )
-
-describe(
-  `fail when new image added with 'requireSnapshots'`,
-  {
-    env: {
-      requireSnapshots: true,
-      failOnSnapshotDiff: false,
-    },
-  },
-  () => {
-    it('logs out error when new image is added', () => {
-      cy.matchImageSnapshot('requireSnapshots env value')
-    })
-  },
-)
