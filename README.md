@@ -8,6 +8,7 @@ Cypress Image Snapshot binds [jest-image-snapshot](https://github.com/americanex
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Installation](#installation)
+  - [TypeScript](#typescript)
 - [Usage](#usage)
   - [In your tests](#in-your-tests)
     - [Options](#options)
@@ -16,8 +17,7 @@ Cypress Image Snapshot binds [jest-image-snapshot](https://github.com/americanex
   - [Requiring snapshots to be present](#requiring-snapshots-to-be-present)
 - [How it works](#how-it-works)
 - [Requirements](#requirements)
-- [TypeScript](#typescript)
-- [What about the original `jaredpalmer/cypress-image-snapshot`?](#what-about-the-original-jaredpalmercypress-image-snapshot)
+- [Forked from `jaredpalmer/cypress-image-snapshot`](#forked-from-jaredpalmercypress-image-snapshot)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -50,7 +50,7 @@ export default defineConfig({
 })
 ```
 
-And finally, add the command to your relevant [support file](https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests#Support-file):
+Add the command to your relevant [support file](https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests#Support-file):
 
 ```ts
 // cypress/support/e2e.ts
@@ -64,6 +64,21 @@ addMatchImageSnapshotCommand()
 addMatchImageSnapshotCommand({
   failureThreshold: 0.2
 })
+```
+
+### TypeScript
+
+This plugin fully supports TypeScript so you can safely remove any reference to `@types/cypress-image-snapshot` from your project
+
+Ensure that the types are included in your `tsconfig.json`
+
+```
+{
+  "compilerOptions": {
+    // ...
+  },
+  "include": ["@simonsmith/cypress-image-snapshot"]
+}
 ```
 
 ## Usage
@@ -135,14 +150,10 @@ The workflow of `cy.matchImageSnapshot()` when running Cypress is:
 ## Requirements
 
 Tested on Cypress > 10.0.0
+
 Cypress must be installed as a peer dependency
 
-## TypeScript
 
-This plugin fully supports TypeScript so you can safely remove any reference to `@types/cypress-image-snapshot` from your project
+## Forked from `jaredpalmer/cypress-image-snapshot`
 
-## What about the original `jaredpalmer/cypress-image-snapshot`?
-
-This is a rewrite of that plugin as it has been abandoned. Originally [I did attempt](https://github.com/jaredpalmer/cypress-image-snapshot/issues/252#issuecomment-1156834734) to bring the original up to date and instead released a forked version as a stop gap. Since then this has become an active plugin so the decision was made to make it more than just a temporary fork.
-
-Full credit goes to [Jared Palmer](https://github.com/jaredpalmer) for his excellent work.
+This is a rewrite of the original plugin as active development has ceased. Full credit goes to [Jared Palmer](https://github.com/jaredpalmer) for creating that
