@@ -156,4 +156,4 @@ Cypress must be installed as a peer dependency
 
 ## Forked from `jaredpalmer/cypress-image-snapshot`
 
-This is a rewrite of the original plugin as active development has ceased. Full credit goes to [Jared Palmer](https://github.com/jaredpalmer) for creating that
+This is a rewrite of the original plugin as active development has ceased. Full credit goes to [Jared Palmer](https://github.com/jaredpalmer).
