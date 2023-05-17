@@ -7,8 +7,6 @@
     "build": "run-s build:clean build:ts",
     "build:clean": "rm -rf dist",
     "build:ts": "tsc",
-    "docker:build": "docker build -t local .",
-    "docker:run": "docker run -it -v \"$(pwd)/cypress:/home/cypress-image-snapshot/cypress\" local",
     "lint": "run-p -c 'lint:*'",
     "lint:ts": "tsc --noEmit",
     "lint:eslint": "eslint --ext .ts,.json .",

@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  cypress:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cypress-image-snapshot
+    volumes:
+      - ./cypress:/home/cypress-image-snapshot/cypress
