@@ -60,7 +60,7 @@ import {addMatchImageSnapshotCommand} from '@simonsmith/cypress-image-snapshot/c
 addMatchImageSnapshotCommand()
 
 // can also add any default options to be used 
-// by all instances of `toMatchSnapshot`
+// by all instances of `matchImageSnapshot`
 addMatchImageSnapshotCommand({
   failureThreshold: 0.2
 })
@@ -68,7 +68,7 @@ addMatchImageSnapshotCommand({
 
 ### TypeScript
 
-This plugin fully supports TypeScript so you can safely remove any reference to `@types/cypress-image-snapshot` from your project
+TypeScript is supported so  any reference to `@types/cypress-image-snapshot` can be removed from your project
 
 Ensure that the types are included in your `tsconfig.json`
 
@@ -152,7 +152,6 @@ The workflow of `cy.matchImageSnapshot()` when running Cypress is:
 Tested on Cypress > 10.0.0
 
 Cypress must be installed as a peer dependency
-
 
 ## Forked from `jaredpalmer/cypress-image-snapshot`
 
