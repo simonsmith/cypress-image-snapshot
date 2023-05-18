@@ -1,5 +1,8 @@
 FROM cypress/base:18.16.0
 
+ENV CYPRESS_updateSnapshots=false
+ENV CYPRESS_debugSnapshots=false
+
 RUN mkdir -p /home/cypress-image-snapshot
 WORKDIR /home/cypress-image-snapshot
 
