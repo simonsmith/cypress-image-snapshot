@@ -23,6 +23,13 @@ it('matches with just options', () => {
   })
 })
 
+/**
+ * this test actually fails but we ignore it
+ * Ensures that:
+ * - pipeline still passes
+ * - failOnSnapshotDiff `false` works
+ * - that images are output to the `__diff_output__` dir
+ **/
 describe(
   'fail when image different',
   {
