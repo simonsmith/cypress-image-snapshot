@@ -16,9 +16,16 @@
     "cypress:open": "cypress open --env debugSnapshots=true,failOnSnapshotDiff=false --browser electron --e2e",
     "cypress:run": "cypress run --browser electron",
     "cypress:server": "http-server -s -p 9001 -c-1 ./cypress/server &",
-    "doc": "doctoc README.md --github --notitle"
+    "doc": "doctoc README.md --github --notitle",
+    "postbuild": "cp package.json dist"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/npm": "^10.0.3",
+    "@semantic-release/release-notes-generator": "^11.0.1",
     "@types/eslint": "^8.37.0",
     "@types/eslint-config-prettier": "^6.11.0",
     "@types/jest": "^29.5.1",
@@ -35,6 +42,8 @@
     "http-server": "^14.1.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.8.8",
+    "replace-json-property": "^1.9.0",
+    "semantic-release": "^21.0.2",
     "typescript": "^5.0.4"
   },
   "peerDependencies": {
