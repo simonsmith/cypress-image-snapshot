@@ -17,6 +17,12 @@ Cypress Image Snapshot binds [jest-image-snapshot](https://github.com/americanex
   - [Requiring snapshots to be present](#requiring-snapshots-to-be-present)
 - [How it works](#how-it-works)
 - [Requirements](#requirements)
+- [Contributing](#contributing)
+  - [Setup](#setup)
+  - [Working on the plugin](#working-on-the-plugin)
+    - [open](#open)
+    - [run](#run)
+      - [Note on environment variables](#note-on-environment-variables)
 - [Forked from `jaredpalmer/cypress-image-snapshot`](#forked-from-jaredpalmercypress-image-snapshot)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -152,6 +158,57 @@ The workflow of `cy.matchImageSnapshot()` when running Cypress is:
 Tested on Cypress 10.x, 11.x and 12.x
 
 Cypress must be installed as a peer dependency
+
+## Contributing
+
+### Setup
+
+* Clone the repository and install the yarn dependencies with `yarn install`
+* Ensure that Docker is setup. This is necessary for generating/updating snapshots
+* Using [Volta](https://volta.sh/) is recommended for managing Node and Yarn versions. These are
+  automatically picked up from the `package.json`
+
+### Working on the plugin
+
+To make it easier to test the plugin whilst developing there are a few simple
+Cypress tests that validate the plugin. There are two ways to run these tests:
+
+#### open
+
+`yarn test:open`
+
+In open mode the tests run in Electron and ignore any snapshot failures. This is
+due to the rendering differences on developer machines vs CI. Here there is also
+verbose output sent to the test runner console to aid debugging
+
+Note here that the yarn script above will re-build the plugin each time. This is
+necessary because the tests are run against the output in the `dist` directory
+to ensure parity between the built package on NPM.
+
+#### run
+
+* `yarn docker:build`
+* `yarn docker:run`
+
+The commands here ensure that the tests are run inside a Docker container that
+matches the CI machine. This allows images to be generated and matched correctly
+when running the tests in Github Actions.
+
+##### Note on environment variables
+
+It is necessary to have two environment variables defined by default before
+running the tests in Docker:
+
+* `CYPRESS_updateSnapshots=false`
+* `CYPRESS_debugSnapshots=false`
+
+It's recommend that these loaded into the shell with something like [direnv](https://direnv.net/)
+
+Then they can be overridden as needed:
+
+```
+CYPRESS_updateSnapshots=true yarn docker:run
+```
 
 ## Forked from `jaredpalmer/cypress-image-snapshot`
 

@@ -11,6 +11,8 @@ it('name and selector', () => {
   cy.get('body').matchImageSnapshot('with custom name')
 })
 
+// next two tests use blackout to change
+// the snapshot image. Also validates options
 it('name and options', () => {
   cy.matchImageSnapshot('name and options', {
     blackout: ['.feature-v20'],
