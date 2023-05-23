@@ -170,7 +170,7 @@ Cypress must be installed as a peer dependency
 
 ### Working on the plugin
 
-To make it easier to test the plugin whilst developing there are a few simple
+To make it easier to test whilst developing there are a few simple
 Cypress tests that validate the plugin. There are two ways to run these tests:
 
 #### open
@@ -179,11 +179,13 @@ Cypress tests that validate the plugin. There are two ways to run these tests:
 
 In open mode the tests run in Electron and ignore any snapshot failures. This is
 due to the rendering differences on developer machines vs CI. Here there is also
-verbose output sent to the test runner console to aid debugging
+verbose output sent to the test runner console to aid debugging.
 
-Note here that the yarn script above will re-build the plugin each time. This is
+**Note** here that the yarn script above will re-build the plugin each time. This is
 necessary because the tests are run against the output in the `dist` directory
-to ensure parity between the built package on NPM.
+to ensure parity between the built package on NPM. 
+
+Ensure that the command is run each time changes need to be tested in Cypress
 
 #### run
 
@@ -202,7 +204,7 @@ running the tests in Docker:
 * `CYPRESS_updateSnapshots=false`
 * `CYPRESS_debugSnapshots=false`
 
-It's recommend that these loaded into the shell with something like [direnv](https://direnv.net/)
+It's recommended that these are loaded into the shell with something like [direnv](https://direnv.net/)
 
 Then they can be overridden as needed:
 
