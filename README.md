@@ -149,7 +149,7 @@ The workflow of `cy.matchImageSnapshot()` when running Cypress is:
 
 ## Requirements
 
-Tested on Cypress > 10.0.0
+Tested on Cypress 10.x, 11.x and 12.x
 
 Cypress must be installed as a peer dependency
 
