@@ -12,7 +12,7 @@
     "lint:ts": "tsc --noEmit",
     "lint:eslint": "eslint --ext .ts,.json .",
     "docker:build": "docker build -t cypress-image-snapshot .",
-    "docker:run": "docker run -it -v ./cypress:/home/cypress-image-snapshot/cypress cypress-image-snapshot",
+    "docker:run": "docker run -it --env CYPRESS_updateSnapshots --env CYPRESS_debugSnapshots -v ./cypress:/home/cypress-image-snapshot/cypress cypress-image-snapshot",
     "cypress:open": "cypress open --env debugSnapshots=true --browser electron --e2e",
     "cypress:run": "cypress run --browser electron",
     "cypress:server": "http-server -s -p 9001 -c-1 ./cypress/server &",
