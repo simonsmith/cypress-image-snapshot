@@ -28,7 +28,6 @@ jobs:
   release:
     needs: [cypress, lint]
     runs-on: ubuntu-latest
-    if: ${{ github.ref == 'refs/heads/master' }}
     permissions:
       contents: write
       issues: write
@@ -41,4 +40,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: yarn release
+        run: |
+          yarn build
+          cp package.json dist
+          yarn release

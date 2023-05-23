@@ -1,13 +1,14 @@
 {
   "name": "@simonsmith/cypress-image-snapshot",
   "packageManager": "yarn@3.5.0",
-  "version": "7.0.0-rc.0",
+  "version": "7.0.0",
   "scripts": {
     "test:open": "npm-run-all build --parallel --race cypress:open cypress:server",
     "test:run": "npm-run-all build --parallel --race cypress:run cypress:server",
     "build": "run-s build:clean build:ts",
     "build:clean": "rm -rf dist",
     "build:ts": "tsc",
+    "build:package.json": "cp package.json dist",
     "lint": "run-p -c 'lint:*'",
     "lint:ts": "tsc --noEmit",
     "lint:eslint": "eslint --ext .ts,.json .",
@@ -17,9 +18,7 @@
     "cypress:run": "cypress run --browser electron",
     "cypress:server": "http-server -s -p 9001 -c-1 ./cypress/server &",
     "doc": "doctoc README.md --github --notitle",
-    "postbuild": "cp package.json dist",
-    "prerelease": "yarn build",
-    "release": "semantic-release --dry-run"
+    "release": "semantic-release"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
