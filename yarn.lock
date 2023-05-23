@@ -679,7 +679,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@semantic-release/github@npm:^8.0.0":
+"@semantic-release/github@npm:^8.0.0, @semantic-release/github@npm:^8.0.7":
   version: 8.0.7
   resolution: "@semantic-release/github@npm:8.0.7"
   dependencies:
@@ -763,6 +763,7 @@ __metadata:
     "@semantic-release/commit-analyzer": ^9.0.2
     "@semantic-release/exec": ^6.0.3
     "@semantic-release/git": ^10.0.1
+    "@semantic-release/github": ^8.0.7
     "@semantic-release/npm": ^10.0.3
     "@semantic-release/release-notes-generator": ^11.0.1
     "@types/eslint": ^8.37.0
