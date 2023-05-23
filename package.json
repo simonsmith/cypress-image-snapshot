@@ -1,7 +1,7 @@
 {
   "name": "@simonsmith/cypress-image-snapshot",
   "packageManager": "yarn@3.5.0",
-  "version": "7.0.0",
+  "version": "7.0.0-rc.0",
   "scripts": {
     "test:open": "npm-run-all build --parallel --race cypress:open cypress:server",
     "test:run": "npm-run-all build --parallel --race cypress:run cypress:server",
@@ -17,7 +17,9 @@
     "cypress:run": "cypress run --browser electron",
     "cypress:server": "http-server -s -p 9001 -c-1 ./cypress/server &",
     "doc": "doctoc README.md --github --notitle",
-    "postbuild": "cp package.json dist"
+    "postbuild": "cp package.json dist",
+    "prerelease": "yarn build",
+    "release": "semantic-release --dry-run"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
