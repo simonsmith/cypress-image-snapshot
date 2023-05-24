@@ -1,3 +1,11 @@
+# [7.0.0-beta.3](https://github.com/simonsmith/cypress-image-snapshot/compare/7.0.0-beta.2...7.0.0-beta.3) (2023-05-24)
+
+
+### Bug Fixes
+
+* ensure files are packaged in root ([db30cbb](https://github.com/simonsmith/cypress-image-snapshot/commit/db30cbb901b52a88f7959fc1565260fadf3f058e))
+* move @types/jest-image-snapshot ([f6404d4](https://github.com/simonsmith/cypress-image-snapshot/commit/f6404d444875efd4e42123dd80e3784c67ec86b1))
+
 # [7.0.0-beta.2](https://github.com/simonsmith/cypress-image-snapshot/compare/7.0.0-beta.1...7.0.0-beta.2) (2023-05-24)
 
 

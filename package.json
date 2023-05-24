@@ -1,7 +1,7 @@
 {
   "name": "@simonsmith/cypress-image-snapshot",
   "packageManager": "yarn@3.5.0",
-  "version": "7.0.0-beta.2",
+  "version": "7.0.0-beta.3",
   "files": [
     "*.js",
     "*.map",
@@ -56,9 +56,9 @@
     "cypress": ">10.0.0"
   },
   "dependencies": {
+    "@types/jest-image-snapshot": "^6.1.0",
     "chalk": "^4.1.2",
     "jest-image-snapshot": "^6.1.0",
-    "@types/jest-image-snapshot": "^6.1.0",
     "just-extend": "^6.2.0"
   },
   "volta": {
