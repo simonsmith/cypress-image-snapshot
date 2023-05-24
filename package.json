@@ -1,7 +1,10 @@
 {
   "name": "@simonsmith/cypress-image-snapshot",
   "packageManager": "yarn@3.5.0",
-  "version": "7.0.0",
+  "version": "7.0.0-beta.1",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test:open": "npm-run-all build --parallel --race cypress:open cypress:server",
     "test:run": "npm-run-all build --parallel --race cypress:run cypress:server",

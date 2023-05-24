@@ -42,5 +42,4 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           yarn build
-          cp package.json dist
           yarn release
