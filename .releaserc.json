@@ -10,7 +10,7 @@
     [
       "@semantic-release/git",
       {
-        "message": "Release <%= nextRelease.version %> [skip ci]",
+        "message": "chore(release): <%= nextRelease.version %> [skip ci]",
         "assets": ["package.json", "CHANGELOG.md"]
       }
     ]
