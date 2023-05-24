@@ -1,1 +1,4 @@
 dist
+/*.js
+/*.d.ts
+/*.map

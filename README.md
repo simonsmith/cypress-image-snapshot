@@ -83,7 +83,7 @@ Ensure that the types are included in your `tsconfig.json`
   "compilerOptions": {
     // ...
   },
-  "include": ["@simonsmith/cypress-image-snapshot"]
+  "include": ["@simonsmith/cypress-image-snapshot/types"]
 }
 ```
 

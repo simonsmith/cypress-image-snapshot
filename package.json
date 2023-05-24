@@ -3,7 +3,9 @@
   "packageManager": "yarn@3.5.0",
   "version": "7.0.0-beta.2",
   "files": [
-    "dist"
+    "*.js",
+    "*.map",
+    "*.d.ts"
   ],
   "scripts": {
     "test:open": "npm-run-all build --parallel --race cypress:open cypress:server",
@@ -11,7 +13,7 @@
     "build": "run-s build:clean build:ts",
     "build:clean": "rm -rf dist",
     "build:ts": "tsc",
-    "build:package.json": "cp package.json dist",
+    "ci:build": "tsc --outDir . --declarationDir .",
     "lint": "run-p -c 'lint:*'",
     "lint:ts": "tsc --noEmit",
     "lint:eslint": "eslint --ext .ts,.json .",
