@@ -1,3 +1,10 @@
+# [7.0.0-beta.2](https://github.com/simonsmith/cypress-image-snapshot/compare/7.0.0-beta.1...7.0.0-beta.2) (2023-05-24)
+
+
+### Bug Fixes
+
+* release from root directory ([0ec36c1](https://github.com/simonsmith/cypress-image-snapshot/commit/0ec36c13bd0ff478ee013f75fc94975a255c33dd))
+
 # [7.0.0-beta.1](https://github.com/simonsmith/cypress-image-snapshot/compare/6.1.1...7.0.0-beta.1) (2023-05-24)
 
 
