@@ -11,8 +11,7 @@
     "declaration": true,
     "declarationDir": "dist",
     "declarationMap": true,
-
     "outDir": "dist"
   },
-  "include": ["src", "./custom.d.ts"]
+  "include": ["src"]
 }
