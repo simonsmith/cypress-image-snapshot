@@ -41,5 +41,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
+          # ci:build outputs all the files to the root so that users do not
+          # need to install from `dist`
           yarn ci:build
           yarn release
