@@ -15,7 +15,7 @@ jobs:
         uses: ./.github/actions/yarn-nm-install
       - run: yarn lint
   cypress:
-    needs: install
+    needs: [install, lint]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
