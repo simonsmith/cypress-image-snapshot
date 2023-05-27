@@ -17,6 +17,7 @@
     "lint": "run-p -c 'lint:*'",
     "lint:ts": "tsc --noEmit",
     "lint:eslint": "eslint --ext .ts,.json .",
+    "lint:commit": "commitlint --from HEAD~1 --to HEAD --verbose",
     "docker:build": "docker build -t cypress-image-snapshot .",
     "docker:run": "docker run -it --env CYPRESS_updateSnapshots --env CYPRESS_debugSnapshots -v ./cypress:/home/cypress-image-snapshot/cypress cypress-image-snapshot",
     "cypress:open": "cypress open --env debugSnapshots=true,failOnSnapshotDiff=false --browser electron --e2e",
@@ -26,6 +27,8 @@
     "release": "semantic-release"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.6.3",
+    "@commitlint/config-conventional": "^17.6.3",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^9.0.2",
     "@semantic-release/exec": "^6.0.3",
