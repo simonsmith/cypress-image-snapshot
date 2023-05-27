@@ -167,6 +167,7 @@ Cypress must be installed as a peer dependency
 * Ensure that Docker is setup. This is necessary for generating/updating snapshots
 * Using [Volta](https://volta.sh/) is recommended for managing Node and Yarn versions. These are
   automatically picked up from the `package.json`
+* Commits should be based on [conventional-changelog](https://github.com/pvdlg/conventional-changelog-metahub#commit-types)
 
 ### Working on the plugin
 
