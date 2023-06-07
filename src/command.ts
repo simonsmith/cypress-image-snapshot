@@ -56,7 +56,6 @@ const matchImageSnapshot =
       defaultOptionsOverrides,
       commandOptions,
     )
-    console.log(options)
 
     const elementToScreenshot = cy.wrap(subject)
     cy.task(MATCH, {
