@@ -47,6 +47,9 @@ describe(
     it('logs out the error when image is different', () => {
       cy.get('.feature-v20').invoke('remove')
       cy.matchImageSnapshot()
+      cy.readFile(
+        './cypress/snapshots/matchImageSnapshot.cy.ts/__diff_output__/fail when image different -- logs out the error when image is different.diff.png',
+      ).should('exist')
     })
   },
 )
