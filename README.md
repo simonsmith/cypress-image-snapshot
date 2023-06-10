@@ -11,7 +11,8 @@ Cypress Image Snapshot binds [jest-image-snapshot](https://github.com/americanex
   - [TypeScript](#typescript)
 - [Usage](#usage)
   - [In your tests](#in-your-tests)
-    - [Options](#options)
+  - [Options](#options)
+    - [Snapshot paths](#snapshot-paths)
   - [Updating snapshots](#updating-snapshots)
   - [Preventing failures](#preventing-failures)
   - [Requiring snapshots to be present](#requiring-snapshots-to-be-present)
@@ -114,7 +115,7 @@ describe('Login', () => {
 });
 ```
 
-#### Options
+### Options
 
 The options object combines jest-image-snapshot and Cypress screenshot configuration.
 
@@ -132,6 +133,52 @@ cy.matchImageSnapshot({
   blackout: ['.some-element'],
 })
 ```
+
+#### Snapshot paths
+
+As of Cypress 10.0.0 a change was made to remove common ancestor paths of
+generated screenshots. This means that it is difficult to mimic the folder
+structure found in the `cypress/e2e/` directory when creating the `snapshots`
+directory.
+
+To workaround this, cypress-image-snapshot makes use of a `e2eSpecFolder`
+option. Here's an example:
+
+```ts
+addMatchImageSnapshotCommand({
+  e2eSpecFolder: 'cypress/e2e/' // the default value
+})
+```
+
+Example output in a project:
+
+```
+cypress
+├── e2e
+│  ├── matchImageSnapshot.cy.ts
+│  ├── nested
+│  │  └── test
+│  └── someOtherTest.cy.ts
+├── snapshots
+│  ├── matchImageSnapshot.cy.ts
+│  │  ├── matches with just options.snap.png
+│  │  ├── name and options.snap.png
+│  │  ├── no arguments.snap.png
+│  │  └── with custom name.snap.png
+│  ├── nested
+│  │  └── test
+│  └── someOtherTest.cy.ts
+│     └── some other test taking a snapshot.snap.png
+```
+
+Without the `e2eSpecFolder` option the `cypress/e2e/` directories would be
+repeated inside the `snapshots` directory. Set this option to whatever
+directory structure is inside the `specPattern` [configuration value](https://docs.cypress.io/guides/references/configuration#e2e). 
+
+See more:
+
+* https://github.com/cypress-io/cypress/issues/22159
+* https://github.com/cypress-io/cypress/issues/24052
 
 ### Updating snapshots
 

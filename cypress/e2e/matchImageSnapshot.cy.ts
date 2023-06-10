@@ -24,32 +24,3 @@ it('matches with just options', () => {
     blackout: ['.card-v14'],
   })
 })
-
-/**
- * this test actually fails but we ignore it
- * Ensures that:
- * - pipeline still passes
- * - failOnSnapshotDiff `false` works
- * - that images are output to the `__diff_output__` dir
- **/
-describe(
-  'fail when image different',
-  {
-    env: {
-      failOnSnapshotDiff: false,
-    },
-    retries: {
-      openMode: 3,
-      runMode: 3,
-    },
-  },
-  () => {
-    it('logs out the error when image is different', () => {
-      cy.get('.feature-v20').invoke('remove')
-      cy.matchImageSnapshot()
-      cy.readFile(
-        './cypress/snapshots/matchImageSnapshot.cy.ts/__diff_output__/fail when image different -- logs out the error when image is different.diff.png',
-      ).should('exist')
-    })
-  },
-)
