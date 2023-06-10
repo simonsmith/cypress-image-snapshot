@@ -12,6 +12,7 @@ Cypress Image Snapshot binds [jest-image-snapshot](https://github.com/americanex
 - [Usage](#usage)
   - [In your tests](#in-your-tests)
     - [Options](#options)
+      - [Setting the spec folder](#setting-the-spec-folder)
   - [Updating snapshots](#updating-snapshots)
   - [Preventing failures](#preventing-failures)
   - [Requiring snapshots to be present](#requiring-snapshots-to-be-present)
@@ -132,6 +133,17 @@ cy.matchImageSnapshot({
   blackout: ['.some-element'],
 })
 ```
+
+##### Setting the spec folder
+
+There is an option called `specFolder` that defaults to `cypress/e2e/`. It's
+important to ensure this matches the path found in your `specPattern`
+[configuration value](https://docs.cypress.io/guides/references/configuration#e2e). 
+
+This is used to ensure that images are written to the snapshots directory with
+the correct ancestor paths, an issue caused by a change in Cypress 10:
+
+* https://github.com/cypress-io/cypress/issues/22159
 
 ### Updating snapshots
 
