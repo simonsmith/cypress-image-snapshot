@@ -56,17 +56,20 @@ const runImageDiffAfterScreenshot = async (
   await fs.rm(screenshotPath)
 
   const {
-    specFileName,
     currentTestTitle,
     screenshotsFolder,
     isUpdateSnapshots,
     customSnapshotsDir,
+    specFileRelativeToRoot,
     customDiffDir,
+    e2eSpecFolder,
   } = options
 
+  const specDestination = specFileRelativeToRoot.replace(e2eSpecFolder, '')
+
   const snapshotsDir = customSnapshotsDir
-    ? path.join(process.cwd(), customSnapshotsDir, specFileName)
-    : path.join(screenshotsFolder, '..', 'snapshots', specFileName)
+    ? path.join(process.cwd(), customSnapshotsDir, specDestination)
+    : path.join(screenshotsFolder, '..', 'snapshots', specDestination)
 
   const snapshotNameFullPath = path.join(
     snapshotsDir,
@@ -75,7 +78,7 @@ const runImageDiffAfterScreenshot = async (
   const snapshotDotPath = path.join(snapshotsDir, `${snapshotName}${SNAP_EXT}`)
 
   const diffDir = customDiffDir
-    ? path.join(process.cwd(), customDiffDir, specFileName)
+    ? path.join(process.cwd(), customDiffDir, specFileRelativeToRoot)
     : path.join(snapshotsDir, DEFAULT_DIFF_DIR)
 
   const diffDotPath = path.join(diffDir, `${snapshotName}${DIFF_EXT}`)
@@ -87,7 +90,6 @@ const runImageDiffAfterScreenshot = async (
     snapshotsDir,
     diffDir,
     diffDotPath,
-    specFileName,
     snapshotName,
     snapshotNameFullPath,
     snapshotDotPath,
