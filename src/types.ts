@@ -24,7 +24,8 @@ export type SnapshotOptions = {
   specFileName: string
   currentTestTitle: string
 } & CypressScreenshotOptions &
-  MatchImageSnapshotOptions
+  MatchImageSnapshotOptions &
+  ExtraSnapshotOptions
 
 // The options that are exposed to the user via `matchImageSnapshot`
 // Prevents the private properties above from showing up in autocomplete
@@ -32,7 +33,7 @@ export type SnapshotOptions = {
 // if one day they choose a clashing key, but this way it keeps the public
 // API non breaking
 export type CypressImageSnapshotOptions = Partial<
-  CypressScreenshotOptions & MatchImageSnapshotOptions
+  CypressScreenshotOptions & MatchImageSnapshotOptions & ExtraSnapshotOptions
 >
 
 export type Subject =
@@ -79,3 +80,21 @@ export type DiffSnapshotOptions = {
   | 'failureThreshold'
   | 'failureThresholdType'
 >
+
+type ExtraSnapshotOptions = {
+  /**
+   * Waits an arbitrary amount of time (in milliseconds) if the baseline image doesn't exist
+   * @default 5000.
+   */
+  delay: number
+  /**
+   * Time it takes for the snapshot command to time out if the snapshot is not correct
+   * @default 15000.
+   */
+  recursiveTimeout: number
+  /**
+   * Sets a delay between recursive snapshots
+   * @default 3000.
+   */
+  delayBetweenTries: number
+}

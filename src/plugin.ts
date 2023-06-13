@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises'
+import * as fs1 from 'fs'
 import path from 'node:path'
 import chalk from 'chalk'
 import {diffImageToSnapshot} from 'jest-image-snapshot/src/diff-snapshot'
@@ -16,6 +17,9 @@ export const addMatchImageSnapshotPlugin = (on: Cypress.PluginEvents) => {
   on('task', {
     [MATCH]: setOptions,
     [RECORD]: getSnapshotResult,
+    readFileMaybe(filename: string) {
+      return fs1.existsSync(filename)
+    },
   })
 }
 
