@@ -39,17 +39,21 @@ describe(
       failOnSnapshotDiff: false,
     },
     retries: {
-      openMode: 3,
+      openMode: 0,
       runMode: 3,
     },
   },
   () => {
+    const isInteractive = Cypress.config('isInteractive')
+    const pathPrefix = isInteractive
+      ? `./cypress/snapshots/${Cypress.browser.name}/open`
+      : `./cypress/snapshots/${Cypress.browser.name}`
+    const pathSuffix = `/cypress/e2e/matchImageSnapshot.cy.ts/__diff_output__/fail when image different -- logs out the error when image is different.diff.png`
+
     it('logs out the error when image is different', () => {
       cy.get('.feature-v20').invoke('remove')
       cy.matchImageSnapshot()
-      cy.readFile(
-        './cypress/snapshots/matchImageSnapshot.cy.ts/__diff_output__/fail when image different -- logs out the error when image is different.diff.png',
-      ).should('exist')
+      cy.readFile(pathPrefix + pathSuffix).should('exist')
     })
   },
 )
