@@ -1,3 +1,24 @@
+# [8.0.0-beta.1](https://github.com/simonsmith/cypress-image-snapshot/compare/7.0.0...8.0.0-beta.1) (2023-07-19)
+
+
+### Features
+
+* normalise directory output for snapshots ([e8b8110](https://github.com/simonsmith/cypress-image-snapshot/commit/e8b8110b5389719da93da331b6cd5e3d08f06741))
+
+
+### BREAKING CHANGES
+
+* This uses the `Cypress.spec.relative` option to
+generate the snapshot directory and changes the folder structure.
+
+It should now match the directory structure found in the `cypress/e2e/`
+directory
+
+Updating to this change may mean committing new snapshot paths and
+removing old ones in your project
+
+See: https://github.com/simonsmith/cypress-image-snapshot/discussions/5
+
 # [7.0.0](https://github.com/simonsmith/cypress-image-snapshot/compare/6.1.1...7.0.0) (2023-05-25)
 
 
