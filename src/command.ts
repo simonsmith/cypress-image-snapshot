@@ -1,5 +1,5 @@
 import extend from 'just-extend'
-import {MATCH, RECORD} from './constants'
+import {MATCH, RECORD, RM} from './constants'
 import type {
   CypressImageSnapshotOptions,
   DiffSnapshotResult,
@@ -82,12 +82,14 @@ const matchImageSnapshot =
       if (added && isRequireSnapshots) {
         const message = `New snapshot: '${screenshotName}' was added, but 'requireSnapshots' was set to true.
             This is likely because this test was run in a CI environment in which snapshots should already be committed.`
-        if (isFailOnSnapshotDiff) {
-          throw new Error(message)
-        } else {
-          Cypress.log({name: COMMAND_NAME, message})
-          return
-        }
+        cy.task(RM, diffOutputPath).then(() => {
+          if (isFailOnSnapshotDiff) {
+            throw new Error(message)
+          } else {
+            Cypress.log({name: COMMAND_NAME, message})
+            return
+          }
+        })
       }
 
       if (!pass && !added && !updated) {

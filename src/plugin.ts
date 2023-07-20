@@ -2,7 +2,7 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import chalk from 'chalk'
 import {diffImageToSnapshot} from 'jest-image-snapshot/src/diff-snapshot'
-import {MATCH, RECORD} from './constants'
+import {MATCH, RECORD, RM} from './constants'
 import type {DiffSnapshotResult, SnapshotOptions} from './types'
 
 /**
@@ -16,6 +16,7 @@ export const addMatchImageSnapshotPlugin = (on: Cypress.PluginEvents) => {
   on('task', {
     [MATCH]: setOptions,
     [RECORD]: getSnapshotResult,
+    [RM]: removeSnapshot,
   })
 }
 
@@ -39,6 +40,11 @@ let snapshotResult = {} as DiffSnapshotResult
 const getSnapshotResult = () => {
   isSnapshotActive = false
   return snapshotResult
+}
+
+const removeSnapshot = async (path: string) => {
+  await fs.rm(path)
+  return null
 }
 
 const runImageDiffAfterScreenshot = async (
