@@ -1,3 +1,29 @@
+# [8.0.0](https://github.com/simonsmith/cypress-image-snapshot/compare/7.0.0...8.0.0) (2023-07-25)
+
+
+### Bug Fixes
+
+* requireSnapshots should work with retries ([ebfc8be](https://github.com/simonsmith/cypress-image-snapshot/commit/ebfc8bebc806d3bf18a044cadecb47c75b1e6325))
+
+
+### Features
+
+* normalise directory output for snapshots ([1939e25](https://github.com/simonsmith/cypress-image-snapshot/commit/1939e25461e5811f2e683e51415653707fd24f03))
+
+
+### BREAKING CHANGES
+
+* This uses the `Cypress.spec.relative` option to
+generate the snapshot directory and changes the folder structure.
+
+It should now match the directory structure found in the `cypress/e2e/`
+directory
+
+Updating to this change may mean committing new snapshot paths and
+removing old ones in your project (especially with component testing)
+
+See the section "Snapshot paths" in the README for more information
+
 # [7.0.0](https://github.com/simonsmith/cypress-image-snapshot/compare/6.1.1...7.0.0) (2023-05-25)
 
 
