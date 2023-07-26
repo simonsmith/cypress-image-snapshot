@@ -18,7 +18,7 @@ const defaultOptions: SnapshotOptions = {
   isUpdateSnapshots,
   isSnapshotDebug,
   specFileRelativeToRoot: Cypress.spec.relative,
-  e2eSpecFolder: 'cypress/e2e/',
+  e2eSpecDir: 'cypress/e2e/',
   currentTestTitle: '',
   failureThreshold: 0,
   failureThresholdType: 'pixel',
@@ -141,6 +141,10 @@ const getNameAndOptions = (
       defaultOptionsOverrides,
       nameOrCommandOptions,
     ) as SnapshotOptions
+  }
+  // temporary backwards compatibility, e2eSpecFolder is deprecated
+  if (options.e2eSpecFolder) {
+    options.e2eSpecDir = options.e2eSpecFolder
   }
   return {
     filename,

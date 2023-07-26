@@ -141,12 +141,12 @@ generated screenshots. This means that it is difficult to mimic the folder
 structure found in the `cypress/e2e/` directory when creating the `snapshots`
 directory.
 
-To workaround this, cypress-image-snapshot makes use of a `e2eSpecFolder`
+To workaround this, cypress-image-snapshot makes use of a `e2eSpecDir`
 option. Here's an example:
 
 ```ts
 addMatchImageSnapshotCommand({
-  e2eSpecFolder: 'cypress/e2e/' // the default value
+  e2eSpecDir: 'cypress/e2e/' // the default value
 })
 ```
 
@@ -171,7 +171,7 @@ cypress
 │     └── some other test taking a snapshot.snap.png
 ```
 
-Without the `e2eSpecFolder` option the `cypress/e2e/` directories would be
+Without the `e2eSpecDir` option the `cypress/e2e/` directories would be
 repeated inside the `snapshots` directory. Set this option to whatever
 directory structure is inside the `specPattern` [configuration value](https://docs.cypress.io/guides/references/configuration#e2e). 
 

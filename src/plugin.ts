@@ -68,10 +68,10 @@ const runImageDiffAfterScreenshot = async (
     customSnapshotsDir,
     specFileRelativeToRoot,
     customDiffDir,
-    e2eSpecFolder,
+    e2eSpecDir,
   } = options
 
-  const specDestination = specFileRelativeToRoot.replace(e2eSpecFolder, '')
+  const specDestination = specFileRelativeToRoot.replace(e2eSpecDir, '')
 
   const snapshotsDir = customSnapshotsDir
     ? path.join(process.cwd(), customSnapshotsDir, specDestination)
