@@ -1,3 +1,10 @@
+## [8.0.1](https://github.com/simonsmith/cypress-image-snapshot/compare/8.0.0...8.0.1) (2023-07-26)
+
+
+### Bug Fixes
+
+* rename e2eSpecFolder -> e2eSpecDir ([106af6c](https://github.com/simonsmith/cypress-image-snapshot/commit/106af6c43b879954847f1ae08088d0063b1c1eba))
+
 # [8.0.0](https://github.com/simonsmith/cypress-image-snapshot/compare/7.0.0...8.0.0) (2023-07-25)
 
 

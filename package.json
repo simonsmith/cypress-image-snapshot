@@ -1,7 +1,7 @@
 {
   "name": "@simonsmith/cypress-image-snapshot",
   "packageManager": "yarn@3.5.0",
-  "version": "8.0.0",
+  "version": "8.0.1",
   "files": [
     "*.js",
     "*.map",
