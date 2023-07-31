@@ -6,3 +6,7 @@ beforeEach(() => {
 it('takes a snapshot of the page', () => {
   cy.matchImageSnapshot()
 })
+
+it('file name should ignore directories', () => {
+  cy.get('h1').matchImageSnapshot('../../../ignore-relative-dirs')
+})

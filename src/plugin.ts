@@ -55,8 +55,7 @@ const runImageDiffAfterScreenshot = async (
     return {path: screenshotPath}
   }
 
-  // name of the screenshot without the Cypress suffixes for test failures
-  const snapshotName = screenshotConfig.name.replace(/ \(attempt [0-9]+\)/, '')
+  const snapshotName = path.basename(screenshotConfig.path, '.png')
 
   const receivedImageBuffer = await fs.readFile(screenshotPath)
   await fs.rm(screenshotPath)
