@@ -1,3 +1,10 @@
+## [8.0.2](https://github.com/simonsmith/cypress-image-snapshot/compare/8.0.1...8.0.2) (2023-07-31)
+
+
+### Bug Fixes
+
+* sanitise snapshot filenames ([ef49519](https://github.com/simonsmith/cypress-image-snapshot/commit/ef49519795daf5183f4fac6f3136e194f20f39f4)), closes [#15](https://github.com/simonsmith/cypress-image-snapshot/issues/15)
+
 ## [8.0.1](https://github.com/simonsmith/cypress-image-snapshot/compare/8.0.0...8.0.1) (2023-07-26)
 
 
