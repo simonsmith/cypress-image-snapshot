@@ -7,6 +7,13 @@
     "*.map",
     "*.d.ts"
   ],
+  "description": "Cypress Image Snapshot binds jest-image-snapshot's image diffing logic to Cypress commands.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/simonsmith/cypress-image-snapshot"
+  },
+  "author": "Simon Smith <simonsmith@users.noreply.github.com>",
+  "license": "MIT",
   "scripts": {
     "test:open": "npm-run-all build --parallel --race cypress:open cypress:server",
     "test:run": "npm-run-all build --parallel --race cypress:run cypress:server",
