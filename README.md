@@ -103,6 +103,9 @@ describe('Login', () => {
     // snapshot name will be the name passed in
     cy.matchImageSnapshot('login');
 
+    // snapshot will be created inside `some/dir`
+    cy.matchImageSnapshot('some/dir/image')
+
     // options object passed in
     cy.matchImageSnapshot({
       failureThreshold: 0.4

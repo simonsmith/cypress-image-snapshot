@@ -11,9 +11,12 @@ it('name and selector', () => {
   cy.get('body').matchImageSnapshot('with custom name')
 })
 
-it('file name should ignore directories', () => {
+it('file name should ignore relative directories', () => {
   cy.get('h1').matchImageSnapshot('../../../ignore-relative-dirs')
-  cy.get('h1').matchImageSnapshot('ignore/folders/image')
+})
+
+it('allows folders to be created within snapshots dir', () => {
+  cy.get('h1').matchImageSnapshot('dir/subdir/image')
 })
 
 // next two tests use blackout to change
