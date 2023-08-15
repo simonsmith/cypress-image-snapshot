@@ -1,3 +1,10 @@
+# [8.1.0](https://github.com/simonsmith/cypress-image-snapshot/compare/8.0.2...8.1.0) (2023-08-15)
+
+
+### Features
+
+* allow subdirectories to be created in snapshots dir ([2218586](https://github.com/simonsmith/cypress-image-snapshot/commit/22185867da1d114a34e132e8f2d97ba4386752bc)), closes [#17](https://github.com/simonsmith/cypress-image-snapshot/issues/17)
+
 ## [8.0.2](https://github.com/simonsmith/cypress-image-snapshot/compare/8.0.1...8.0.2) (2023-07-31)
 
 
