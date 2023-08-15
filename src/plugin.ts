@@ -55,8 +55,6 @@ const runImageDiffAfterScreenshot = async (
     return {path: screenshotPath}
   }
 
-  const snapshotName = path.basename(screenshotConfig.path, '.png')
-
   const receivedImageBuffer = await fs.readFile(screenshotPath)
   await fs.rm(screenshotPath)
 
@@ -69,6 +67,20 @@ const runImageDiffAfterScreenshot = async (
     customDiffDir,
     e2eSpecDir,
   } = options
+
+  let snapshotName = path.basename(screenshotConfig.path, PNG_EXT)
+  const dirName = path.dirname(
+    screenshotConfig.path
+      // remove the screenshots path and just leave folders to be created in
+      // the snapshots folder
+      .replace(screenshotConfig.specName, '')
+      // remove specName here because in run mode it's added and duplicated.
+      // In open mode it's an empty string so is ignored
+      .replace(screenshotsFolder, ''),
+  )
+  snapshotName = path.join(dirName, snapshotName)
+  log('snapshotName', snapshotName)
+  log('screenshotConfig', screenshotConfig)
 
   const specDestination = specFileRelativeToRoot.replace(e2eSpecDir, '')
 
@@ -168,7 +180,8 @@ async function pathExists(path: string) {
   }
 }
 
-const log = (...message: any) => { // eslint-disable-line
+const log = (...message: any) => {
+  // eslint-disable-line
   if (options.isSnapshotDebug) {
     console.log(chalk.blueBright.bold('matchImageSnapshot: '), ...message)
   }
