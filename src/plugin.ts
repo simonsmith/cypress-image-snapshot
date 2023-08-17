@@ -78,7 +78,10 @@ const runImageDiffAfterScreenshot = async (
       // In open mode it's an empty string so is ignored
       .replace(screenshotsFolder, ''),
   )
-  snapshotName = path.join(dirName, snapshotName)
+  snapshotName = path
+    .join(dirName, snapshotName)
+    .replace(/ \(attempt [0-9]+\)/, '')
+
   log('snapshotName', snapshotName)
   log('screenshotConfig', screenshotConfig)
 
