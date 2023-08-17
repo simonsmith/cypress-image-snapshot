@@ -1,3 +1,10 @@
+## [8.1.1](https://github.com/simonsmith/cypress-image-snapshot/compare/8.1.0...8.1.1) (2023-08-17)
+
+
+### Bug Fixes
+
+* remove attempt suffix from snapshot name ([eb544a1](https://github.com/simonsmith/cypress-image-snapshot/commit/eb544a144cf4fc476ed38c05f44654dea48b5427)), closes [#19](https://github.com/simonsmith/cypress-image-snapshot/issues/19)
+
 # [8.1.0](https://github.com/simonsmith/cypress-image-snapshot/compare/8.0.2...8.1.0) (2023-08-15)
 
 
