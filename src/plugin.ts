@@ -73,7 +73,7 @@ const runImageDiffAfterScreenshot = async (
     screenshotConfig.path
       // remove the screenshots path and just leave folders to be created in
       // the snapshots folder
-      .replace(screenshotConfig.specName, '')
+      .replace(path.normalize(screenshotConfig.specName), '')
       // remove specName here because in run mode it's added and duplicated.
       // In open mode it's an empty string so is ignored
       .replace(screenshotsFolder, ''),
@@ -85,7 +85,10 @@ const runImageDiffAfterScreenshot = async (
   log('snapshotName', snapshotName)
   log('screenshotConfig', screenshotConfig)
 
-  const specDestination = specFileRelativeToRoot.replace(e2eSpecDir, '')
+  const specDestination = specFileRelativeToRoot.replace(
+    path.normalize(e2eSpecDir),
+    '',
+  )
 
   const snapshotsDir = customSnapshotsDir
     ? path.join(process.cwd(), customSnapshotsDir, specDestination)
