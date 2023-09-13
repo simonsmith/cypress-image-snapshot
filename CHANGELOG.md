@@ -1,3 +1,10 @@
+## [8.1.2](https://github.com/simonsmith/cypress-image-snapshot/compare/8.1.1...8.1.2) (2023-09-13)
+
+
+### Bug Fixes
+
+* normalize spec name and e2e spec dir to fix cross OS issue ([23b9083](https://github.com/simonsmith/cypress-image-snapshot/commit/23b9083a1bf3cf6fa15e3d09f08fac62fffa6177))
+
 ## [8.1.1](https://github.com/simonsmith/cypress-image-snapshot/compare/8.1.0...8.1.1) (2023-08-17)
 
 
