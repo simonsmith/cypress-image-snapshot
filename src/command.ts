@@ -49,7 +49,7 @@ const matchImageSnapshot =
   ) => {
     // access the env here so that it can be overridden in tests
     const isFailOnSnapshotDiff: boolean =
-      typeof Cypress.env('failOnSnapshotDiff') === 'undefined' || false
+      Cypress.env('failOnSnapshotDiff') !== false
     const isRequireSnapshots: boolean = Cypress.env('requireSnapshots') || false
 
     const {filename, options} = getNameAndOptions(

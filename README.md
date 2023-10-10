@@ -189,7 +189,9 @@ Run Cypress with `--env updateSnapshots=true` in order to update the base image 
 
 ### Preventing failures
 
-Run Cypress with `--env failOnSnapshotDiff=false` in order to prevent test failures when an image diff does not pass.
+By default tests will fail when a snapshot fails to match. Run Cypress with
+`--env failOnSnapshotDiff=false` in order to prevent test failures when an image
+diff does not pass.
 
 ### Requiring snapshots to be present
 
