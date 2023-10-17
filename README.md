@@ -66,16 +66,16 @@ import {addMatchImageSnapshotCommand} from '@simonsmith/cypress-image-snapshot/c
 
 addMatchImageSnapshotCommand()
 
-// can also add any default options to be used 
+// can also add any default options to be used
 // by all instances of `matchImageSnapshot`
 addMatchImageSnapshotCommand({
-  failureThreshold: 0.2
+  failureThreshold: 0.2,
 })
 ```
 
 ### TypeScript
 
-TypeScript is supported so  any reference to `@types/cypress-image-snapshot` can be removed from your project
+TypeScript is supported so any reference to `@types/cypress-image-snapshot` can be removed from your project
 
 Ensure that the types are included in your `tsconfig.json`
 
@@ -122,8 +122,8 @@ describe('Login', () => {
 
 The options object combines jest-image-snapshot and Cypress screenshot configuration.
 
-* [jest-image-snapshot](https://github.com/americanexpress/jest-image-snapshot#%EF%B8%8F-api)
-* [Cypress screenshot](https://docs.cypress.io/api/commands/screenshot#Arguments)
+- [jest-image-snapshot](https://github.com/americanexpress/jest-image-snapshot#%EF%B8%8F-api)
+- [Cypress screenshot](https://docs.cypress.io/api/commands/screenshot#Arguments)
 
 ```ts
 cy.matchImageSnapshot({
@@ -176,7 +176,7 @@ option. Here's an example:
 
 ```ts
 addMatchImageSnapshotCommand({
-  e2eSpecDir: 'cypress/e2e/' // the default value
+  e2eSpecDir: 'cypress/e2e/', // the default value
 })
 ```
 
@@ -203,12 +203,12 @@ cypress
 
 Without the `e2eSpecDir` option the `cypress/e2e/` directories would be
 repeated inside the `snapshots` directory. Set this option to whatever
-directory structure is inside the `specPattern` [configuration value](https://docs.cypress.io/guides/references/configuration#e2e). 
+directory structure is inside the `specPattern` [configuration value](https://docs.cypress.io/guides/references/configuration#e2e).
 
 See more:
 
-* https://github.com/cypress-io/cypress/issues/22159
-* https://github.com/cypress-io/cypress/issues/24052
+- https://github.com/cypress-io/cypress/issues/22159
+- https://github.com/cypress-io/cypress/issues/24052
 
 ### Updating snapshots
 
@@ -242,11 +242,11 @@ Cypress must be installed as a peer dependency
 
 ### Setup
 
-* Clone the repository and install the yarn dependencies with `yarn install`
-* Ensure that Docker is setup. This is necessary for generating/updating snapshots
-* Using [Volta](https://volta.sh/) is recommended for managing Node and Yarn versions. These are
+- Clone the repository and install the yarn dependencies with `yarn install`
+- Ensure that Docker is setup. This is necessary for generating/updating snapshots
+- Using [Volta](https://volta.sh/) is recommended for managing Node and Yarn versions. These are
   automatically picked up from the `package.json`
-* Commits should be based on [conventional-changelog](https://github.com/pvdlg/conventional-changelog-metahub#commit-types)
+- Commits should be based on [conventional-changelog](https://github.com/pvdlg/conventional-changelog-metahub#commit-types)
 
 ### Working on the plugin
 
@@ -263,14 +263,14 @@ verbose output sent to the test runner console to aid debugging.
 
 **Note** here that the yarn script above will re-build the plugin each time. This is
 necessary because the tests are run against the output in the `dist` directory
-to ensure parity between the built package on NPM. 
+to ensure parity between the built package on NPM.
 
 Ensure that the command is run each time changes need to be tested in Cypress
 
 #### run
 
-* `yarn docker:build`
-* `yarn docker:run`
+- `yarn docker:build`
+- `yarn docker:run`
 
 The commands here ensure that the tests are run inside a Docker container that
 matches the CI machine. This allows images to be generated and matched correctly
@@ -281,8 +281,8 @@ when running the tests in Github Actions.
 It is necessary to have two environment variables defined by default before
 running the tests in Docker:
 
-* `CYPRESS_updateSnapshots=false`
-* `CYPRESS_debugSnapshots=false`
+- `CYPRESS_updateSnapshots=false`
+- `CYPRESS_debugSnapshots=false`
 
 It's recommended that these are loaded into the shell with something like [direnv](https://direnv.net/)
 
