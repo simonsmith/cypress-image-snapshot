@@ -48,7 +48,8 @@ const matchImageSnapshot =
     commandOptions?: CypressImageSnapshotOptions,
   ) => {
     // access the env here so that it can be overridden in tests
-    const isFailOnSnapshotDiff: boolean = Cypress.env('failOnSnapshotDiff') !== false
+    const isFailOnSnapshotDiff: boolean =
+      Cypress.env('failOnSnapshotDiff') !== false
     const isRequireSnapshots: boolean = Cypress.env('requireSnapshots') || false
 
     const {filename, options} = getNameAndOptions(
