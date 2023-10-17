@@ -142,10 +142,6 @@ const getNameAndOptions = (
       nameOrCommandOptions,
     ) as SnapshotOptions
   }
-  // temporary backwards compatibility, e2eSpecFolder is deprecated
-  if (options.e2eSpecFolder) {
-    options.e2eSpecDir = options.e2eSpecFolder
-  }
   return {
     filename,
     options,

@@ -24,7 +24,6 @@ export type SnapshotOptions = {
   specFileRelativeToRoot: string
   currentTestTitle: string
   e2eSpecDir: string
-  e2eSpecFolder?: string
 } & CypressScreenshotOptions &
   MatchImageSnapshotOptions
 
@@ -36,11 +35,6 @@ export type SnapshotOptions = {
 export type CypressImageSnapshotOptions = Partial<
   CypressScreenshotOptions & MatchImageSnapshotOptions
 > & {
-  /**
-   * @deprecated
-   * use `e2eSpecDir` instead
-   */
-  e2eSpecFolder?: string
   e2eSpecDir?: string
 }
 
