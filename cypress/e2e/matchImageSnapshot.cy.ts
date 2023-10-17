@@ -19,6 +19,22 @@ it('allows folders to be created within snapshots dir', () => {
   cy.get('h1').matchImageSnapshot('dir/subdir/image')
 })
 
+it('allows .snap extension to be changed', () => {
+  cy.get('body').matchImageSnapshot('snap-ext', {
+    snapFilenameExtension: '.custom-snap-name',
+  })
+  cy.readFile(
+    './cypress/snapshots/matchImageSnapshot.cy.ts/snap-ext.custom-snap-name.png',
+  ).should('exist')
+
+  cy.get('body').matchImageSnapshot('no-ext', {
+    snapFilenameExtension: '',
+  })
+  cy.readFile('./cypress/snapshots/matchImageSnapshot.cy.ts/no-ext.png').should(
+    'exist',
+  )
+})
+
 // next two tests use blackout to change
 // the snapshot image. Also validates options
 it('name and options', () => {

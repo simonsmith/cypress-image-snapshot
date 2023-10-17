@@ -22,6 +22,8 @@ const defaultOptions: SnapshotOptions = {
   currentTestTitle: '',
   failureThreshold: 0,
   failureThresholdType: 'pixel',
+  snapFilenameExtension: '.snap',
+  diffFilenameExtension: '.diff',
 }
 
 /**

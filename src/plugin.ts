@@ -32,8 +32,6 @@ const setOptions = (commandOptions: SnapshotOptions) => {
 }
 
 const PNG_EXT = '.png'
-const SNAP_EXT = `.snap${PNG_EXT}`
-const DIFF_EXT = `.diff${PNG_EXT}`
 const DEFAULT_DIFF_DIR = '__diff_output__'
 
 let snapshotResult = {} as DiffSnapshotResult
@@ -66,6 +64,8 @@ const runImageDiffAfterScreenshot = async (
     specFileRelativeToRoot,
     customDiffDir,
     e2eSpecDir,
+    snapFilenameExtension,
+    diffFilenameExtension,
   } = options
 
   let snapshotName = path.basename(screenshotConfig.path, PNG_EXT)
@@ -98,13 +98,19 @@ const runImageDiffAfterScreenshot = async (
     snapshotsDir,
     `${snapshotName}${PNG_EXT}`,
   )
-  const snapshotDotPath = path.join(snapshotsDir, `${snapshotName}${SNAP_EXT}`)
+  const snapshotDotPath = path.join(
+    snapshotsDir,
+    `${snapshotName}${snapFilenameExtension}${PNG_EXT}`,
+  )
 
   const diffDir = customDiffDir
     ? path.join(process.cwd(), customDiffDir, specFileRelativeToRoot)
     : path.join(snapshotsDir, DEFAULT_DIFF_DIR)
 
-  const diffDotPath = path.join(diffDir, `${snapshotName}${DIFF_EXT}`)
+  const diffDotPath = path.join(
+    diffDir,
+    `${snapshotName}${diffFilenameExtension}${PNG_EXT}`,
+  )
 
   logTestName(currentTestTitle)
   log('options', options)
@@ -167,9 +173,15 @@ const runImageDiffAfterScreenshot = async (
   }
 
   await fs.copyFile(snapshotNameFullPath, snapshotDotPath)
-  await fs.rm(snapshotNameFullPath)
+
+  // don't remove if the paths are the same, this can happen
+  // if the user passes empty string for snapFilenameExtension
+  if (snapshotNameFullPath !== snapshotDotPath) {
+    await fs.rm(snapshotNameFullPath)
+  }
 
   snapshotResult.diffOutputPath = snapshotDotPath
+  log(snapshotResult)
 
   log('screenshot write to snapshotDotPath')
   return {

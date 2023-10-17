@@ -24,6 +24,8 @@ export type SnapshotOptions = {
   specFileRelativeToRoot: string
   currentTestTitle: string
   e2eSpecDir: string
+  snapFilenameExtension: string
+  diffFilenameExtension: string
 } & CypressScreenshotOptions &
   MatchImageSnapshotOptions
 
@@ -36,6 +38,8 @@ export type CypressImageSnapshotOptions = Partial<
   CypressScreenshotOptions & MatchImageSnapshotOptions
 > & {
   e2eSpecDir?: string
+  snapFilenameExtension?: string
+  diffFilenameExtension?: string
 }
 
 export type Subject =
