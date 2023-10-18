@@ -1014,7 +1014,6 @@ __metadata:
     eslint-plugin-prettier: ^4.2.1
     http-server: ^14.1.1
     jest-image-snapshot: ^6.1.0
-    just-extend: ^6.2.0
     npm-run-all: ^4.1.5
     prettier: ^2.8.8
     replace-json-property: ^1.9.0
@@ -4972,13 +4971,6 @@ __metadata:
   version: 6.0.2
   resolution: "just-diff@npm:6.0.2"
   checksum: 1a0c7524f640cb88ab013862733e710f840927834208fd3b85cbc5da2ced97acc75e7dcfe493268ac6a6514c51dd8624d2fd9d057050efba3c02b81a6dcb7ff9
-  languageName: node
-  linkType: hard
-
-"just-extend@npm:^6.2.0":
-  version: 6.2.0
-  resolution: "just-extend@npm:6.2.0"
-  checksum: 022024d6f687c807963b97a24728a378799f7e4af7357d1c1f90dedb402943d5c12be99a5136654bed8362c37a358b1793feaad3366896f239a44e17c5032d86
   languageName: node
   linkType: hard
 

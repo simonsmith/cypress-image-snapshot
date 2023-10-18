@@ -1,4 +1,4 @@
-import extend from 'just-extend'
+import extend from './util/extend'
 import {MATCH, RECORD, RM} from './constants'
 import type {
   CypressImageSnapshotOptions,
