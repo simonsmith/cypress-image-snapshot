@@ -1,3 +1,27 @@
+# [9.0.0](https://github.com/simonsmith/cypress-image-snapshot/compare/8.1.2...9.0.0) (2023-10-20)
+
+
+### Bug Fixes
+
+* allow isFailOnSnapshotDiff to be set to true ([62b8edf](https://github.com/simonsmith/cypress-image-snapshot/commit/62b8edf937174c222451c2bffd57ec43828fc594)), closes [#22](https://github.com/simonsmith/cypress-image-snapshot/issues/22)
+* inline just-extend to prevent build failures ([c498800](https://github.com/simonsmith/cypress-image-snapshot/commit/c498800276053f1714227927c160bc8b7d43d67c)), closes [#12](https://github.com/simonsmith/cypress-image-snapshot/issues/12)
+
+
+### Code Refactoring
+
+* remove deprecated e2eSpecFolder option ([e72673f](https://github.com/simonsmith/cypress-image-snapshot/commit/e72673f5ca608482da87dad11b65fcdb74b84ed9))
+
+
+### Features
+
+* allow snap and diff extensions to be configured ([0fc9762](https://github.com/simonsmith/cypress-image-snapshot/commit/0fc976282baabdcccff500f056c9a351aa75a874)), closes [#33](https://github.com/simonsmith/cypress-image-snapshot/issues/33)
+
+
+### BREAKING CHANGES
+
+* Any users that made use of `e2eSpecFolder` in `8.0.0`
+(deprecated in `8.0.1`) will need to change it to `e2eSpecDir`
+
 ## [8.1.2](https://github.com/simonsmith/cypress-image-snapshot/compare/8.1.1...8.1.2) (2023-09-13)
 
 
