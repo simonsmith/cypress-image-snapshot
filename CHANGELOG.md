@@ -1,3 +1,10 @@
+## [9.0.1](https://github.com/simonsmith/cypress-image-snapshot/compare/9.0.0...9.0.1) (2023-10-23)
+
+
+### Bug Fixes
+
+* **build:** add missing dir to files in package.json ([67e2748](https://github.com/simonsmith/cypress-image-snapshot/commit/67e2748e8358bd540d93223c2a492a933da6667e)), closes [#35](https://github.com/simonsmith/cypress-image-snapshot/issues/35)
+
 # [9.0.0](https://github.com/simonsmith/cypress-image-snapshot/compare/8.1.2...9.0.0) (2023-10-20)
 
 
