@@ -5,7 +5,8 @@
   "files": [
     "*.js",
     "*.map",
-    "*.d.ts"
+    "*.d.ts",
+    "util"
   ],
   "description": "Cypress Image Snapshot binds jest-image-snapshot's image diffing logic to Cypress commands.",
   "repository": {
