@@ -7,6 +7,12 @@ it('no arguments', () => {
   cy.matchImageSnapshot()
 })
 
+it('works without element but with options passed', () => {
+  cy.matchImageSnapshot('without-element', {
+    blackout: ['.card-v14'],
+  })
+})
+
 it('name and selector', () => {
   cy.get('body').matchImageSnapshot('with custom name')
 })
