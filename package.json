@@ -27,7 +27,7 @@
     "lint:eslint": "eslint --ext .ts,.json .",
     "lint:commits": "commitlint --from=HEAD~$(git --no-pager rev-list origin/master..HEAD --count)",
     "docker:build": "docker build -t cypress-image-snapshot .",
-    "docker:run": "docker run -it --env CYPRESS_updateSnapshots --env CYPRESS_debugSnapshots -v ./cypress:/home/cypress-image-snapshot/cypress cypress-image-snapshot",
+    "docker:run": "docker run -it --env CYPRESS_updateSnapshots --env CYPRESS_debugSnapshots -v $PWD:/home/cypress-image-snapshot cypress-image-snapshot",
     "cypress:open": "cypress open --env debugSnapshots=true,failOnSnapshotDiff=false --browser electron --e2e",
     "cypress:run": "cypress run --browser electron",
     "cypress:server": "http-server -s -p 9001 -c-1 ./cypress/server &",

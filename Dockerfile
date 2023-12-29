@@ -8,7 +8,8 @@ WORKDIR /home/cypress-image-snapshot
 
 COPY . .
 
-RUN corepack prepare yarn@3.5.0 --activate && \
+RUN corepack enable && \
+    corepack prepare yarn@3.5.0 --activate && \
     yarn set version 3.5.0
 RUN yarn install
 RUN yarn build
