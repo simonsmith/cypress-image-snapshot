@@ -5,9 +5,11 @@ runs:
   using: composite
   steps:
     - name: install node
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
-        node-version: '18'
+        node-version: '20.10.0'
+    - run: corepack enable
+      shell: bash
     - run: corepack prepare yarn@3.5.0 --activate
       shell: bash
     - run: yarn set version 3.5.0

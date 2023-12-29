@@ -1,4 +1,4 @@
-FROM cypress/base:18.16.0
+FROM cypress/base:20.10.0
 
 ENV CYPRESS_updateSnapshots=false
 ENV CYPRESS_debugSnapshots=false
