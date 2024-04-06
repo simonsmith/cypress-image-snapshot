@@ -7,12 +7,12 @@ runs:
     - name: install node
       uses: actions/setup-node@v4
       with:
-        node-version: '20.10.0'
+        node-version: '20.11.1'
     - run: corepack enable
       shell: bash
-    - run: corepack prepare yarn@3.5.0 --activate
+    - run: corepack prepare yarn@4.1.1 --activate
       shell: bash
-    - run: yarn set version 3.5.0
+    - run: yarn set version 4.1.1
       shell: bash
     - name: yarn install
       uses: ./.github/actions/yarn-nm-install

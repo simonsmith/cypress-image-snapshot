@@ -72,7 +72,7 @@
     "jest-image-snapshot": "^6.1.0"
   },
   "volta": {
-    "node": "20.10.0",
-    "yarn": "3.5.0"
+    "node": "20.11.1",
+    "yarn": "4.1.1"
   }
 }
