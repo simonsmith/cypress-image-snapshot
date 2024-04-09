@@ -1,3 +1,10 @@
+## [9.0.2](https://github.com/simonsmith/cypress-image-snapshot/compare/9.0.1...9.0.2) (2024-04-09)
+
+
+### Bug Fixes
+
+* **command.ts:** align order of variables with error message ([31e4f06](https://github.com/simonsmith/cypress-image-snapshot/commit/31e4f06094f6202f75eb4949e7d7cea207fd0408))
+
 ## [9.0.1](https://github.com/simonsmith/cypress-image-snapshot/compare/9.0.0...9.0.1) (2023-10-23)
 
 
