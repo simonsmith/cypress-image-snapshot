@@ -69,15 +69,24 @@ const runImageDiffAfterScreenshot = async (
   } = options
 
   let snapshotName = path.basename(screenshotConfig.path, PNG_EXT)
-  const dirName = path.dirname(
-    screenshotConfig.path
-      // remove the screenshots path and just leave folders to be created in
-      // the snapshots folder
-      .replace(path.normalize(screenshotConfig.specName), '')
-      // remove specName here because in run mode it's added and duplicated.
-      // In open mode it's an empty string so is ignored
-      .replace(screenshotsFolder, ''),
-  )
+
+  let cleanedScreenshotPath = screenshotConfig.path
+
+  // In open mode it's an empty string so its skipped.
+  if (screenshotConfig.specName) {
+    // remove specName here because in run mode it's added and duplicated.
+    cleanedScreenshotPath = cleanedScreenshotPath.replace(
+      path.normalize(screenshotConfig.specName),
+      '',
+    )
+  }
+
+  // remove the screenshots path and just leave folders to be created in
+  // the snapshots folder
+  cleanedScreenshotPath = cleanedScreenshotPath.replace(screenshotsFolder, '')
+
+  const dirName = path.dirname(cleanedScreenshotPath)
+
   snapshotName = path
     .join(dirName, snapshotName)
     .replace(/ \(attempt [0-9]+\)/, '')
