@@ -1,3 +1,10 @@
+## [9.0.3](https://github.com/simonsmith/cypress-image-snapshot/compare/9.0.2...9.0.3) (2024-05-06)
+
+
+### Bug Fixes
+
+* only replace specName in cypress run mode, fixes [#54](https://github.com/simonsmith/cypress-image-snapshot/issues/54) ([fab282d](https://github.com/simonsmith/cypress-image-snapshot/commit/fab282d3751b2b4b7f711e314b1d43aef8fb33ab))
+
 ## [9.0.2](https://github.com/simonsmith/cypress-image-snapshot/compare/9.0.1...9.0.2) (2024-04-09)
 
 
