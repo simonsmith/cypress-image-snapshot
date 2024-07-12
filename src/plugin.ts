@@ -54,7 +54,9 @@ const runImageDiffAfterScreenshot = async (
   }
 
   const receivedImageBuffer = await fs.readFile(screenshotPath)
-  await fs.rm(screenshotPath)
+  if (options.isDeleteScreenshot) {
+    await fs.rm(screenshotPath)
+  }
 
   const {
     currentTestTitle,
