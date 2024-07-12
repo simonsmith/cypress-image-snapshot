@@ -26,6 +26,7 @@ export type SnapshotOptions = {
   e2eSpecDir: string
   snapFilenameExtension: string
   diffFilenameExtension: string
+  isDeleteScreenshot?: boolean
 } & CypressScreenshotOptions &
   MatchImageSnapshotOptions
 
@@ -40,6 +41,7 @@ export type CypressImageSnapshotOptions = Partial<
   e2eSpecDir?: string
   snapFilenameExtension?: string
   diffFilenameExtension?: string
+  isDeleteScreenshot?: boolean
 }
 
 export type Subject =
