@@ -41,6 +41,24 @@ it('allows .snap extension to be changed', () => {
   )
 })
 
+it('allows screenshot to not be deleted', () => {
+  cy.get('body').matchImageSnapshot('no-delete', {
+    isDeleteScreenshot: false,
+  })
+
+  cy.readFile(
+    './cypress/screenshots/matchImageSnapshot.cy.ts/no-delete.png',
+  ).should('exist')
+})
+
+it('allows screenshot to not be deleted default', () => {
+  cy.get('body').matchImageSnapshot('no-delete-default')
+
+  cy.readFile(
+    './cypress/screenshots/matchImageSnapshot.cy.ts/no-delete-default.png',
+  ).should('not.exist')
+})
+
 // next two tests use blackout to change
 // the snapshot image. Also validates options
 it('name and options', () => {
