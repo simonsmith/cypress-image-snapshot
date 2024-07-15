@@ -41,6 +41,7 @@ it('allows .snap extension to be changed', () => {
   )
 })
 
+// passing false to the new not delete option
 it('allows screenshot to not be deleted', () => {
   cy.get('body').matchImageSnapshot('no-delete', {
     isDeleteScreenshot: false,
