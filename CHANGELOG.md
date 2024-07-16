@@ -1,3 +1,10 @@
+# [9.1.0](https://github.com/simonsmith/cypress-image-snapshot/compare/9.0.3...9.1.0) (2024-07-16)
+
+
+### Features
+
+* delete screenshot option ([2c3bd30](https://github.com/simonsmith/cypress-image-snapshot/commit/2c3bd304e97534724fe6e541eb4ea49d0a3f9cff))
+
 ## [9.0.3](https://github.com/simonsmith/cypress-image-snapshot/compare/9.0.2...9.0.3) (2024-05-06)
 
 
