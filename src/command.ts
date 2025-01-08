@@ -96,11 +96,12 @@ const matchImageSnapshot =
       }
 
       if (!pass && !added && !updated) {
-        const message = diffSize
-          ? `Image size (${imageDimensions.receivedWidth}x${imageDimensions.receivedHeight}) different than saved snapshot size (${imageDimensions.baselineWidth}x${imageDimensions.baselineHeight}).\nSee diff for details: ${diffOutputPath}`
-          : `Image was ${
-              diffRatio * 100
-            }% different from saved snapshot with ${diffPixelCount} different pixels.\nSee diff for details: ${diffOutputPath}`
+        const message =
+          diffSize && !options.allowSizeMismatch
+            ? `Image size (${imageDimensions.receivedWidth}x${imageDimensions.receivedHeight}) different than saved snapshot size (${imageDimensions.baselineWidth}x${imageDimensions.baselineHeight}).\nSee diff for details: ${diffOutputPath}`
+            : `Image was ${
+                diffRatio * 100
+              }% different from saved snapshot with ${diffPixelCount} different pixels.\nSee diff for details: ${diffOutputPath}`
 
         if (isFailOnSnapshotDiff) {
           throw new Error(message)
