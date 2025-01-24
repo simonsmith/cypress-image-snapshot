@@ -2,12 +2,6 @@
   "name": "@simonsmith/cypress-image-snapshot",
   "packageManager": "yarn@3.5.0",
   "version": "9.1.0",
-  "files": [
-    "*.js",
-    "*.map",
-    "*.d.ts",
-    "util"
-  ],
   "description": "Cypress Image Snapshot binds jest-image-snapshot's image diffing logic to Cypress commands.",
   "repository": {
     "type": "git",
@@ -15,17 +9,55 @@
   },
   "author": "Simon Smith <simonsmith@users.noreply.github.com>",
   "license": "MIT",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "main": "./dist/plugin.js",
+  "types": "./dist/plugin.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/plugin.d.ts",
+      "require": "./dist/plugin.js"
+    },
+    "./plugin": {
+      "types": "./dist/plugin.d.ts",
+      "require": "./dist/plugin.js"
+    },
+    "./command": {
+      "types": "./dist/command.d.ts",
+      "require": "./dist/command.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "require": "./dist/types.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "plugin": [
+        "./dist/plugin.d.ts"
+      ],
+      "command": [
+        "./dist/command.d.ts"
+      ],
+      "types": [
+        "./dist/types.d.ts"
+      ]
+    }
+  },
   "scripts": {
     "test:open": "npm-run-all build --parallel --race cypress:open cypress:server",
     "test:run": "npm-run-all build --parallel --race cypress:run cypress:server",
     "build": "run-s build:clean build:ts",
     "build:clean": "rm -rf dist",
     "build:ts": "tsc",
-    "ci:build": "tsc --outDir . --declarationDir .",
     "lint": "run-p -c 'lint:*'",
     "lint:ts": "tsc --noEmit",
-    "lint:eslint": "eslint --ext .ts,.json .",
+    "lint:eslint": "eslint --ext .ts .",
     "lint:commits": "commitlint --from=HEAD~$(git --no-pager rev-list origin/master..HEAD --count)",
+    "lint:prettier": "prettier --check .",
+    "format": "prettier --write .",
     "docker:build": "docker build -t cypress-image-snapshot .",
     "docker:run": "docker run -it --env CYPRESS_updateSnapshots --env CYPRESS_debugSnapshots -v $PWD:/home/cypress-image-snapshot cypress-image-snapshot",
     "cypress:open": "cypress open --env debugSnapshots=true,failOnSnapshotDiff=false --browser electron --e2e",
@@ -35,44 +67,40 @@
     "release": "semantic-release"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.6.3",
-    "@commitlint/config-conventional": "^17.6.3",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/commit-analyzer": "^13.0.1",
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^8.0.7",
-    "@semantic-release/npm": "^10.0.3",
-    "@semantic-release/release-notes-generator": "^11.0.1",
-    "@types/eslint": "^8.37.0",
-    "@types/eslint-config-prettier": "^6.11.0",
-    "@types/jest": "^29.5.1",
-    "@types/node": "^18.16.12",
-    "@types/prettier": "^2.7.2",
-    "@typescript-eslint/eslint-plugin": "^5.59.6",
-    "@typescript-eslint/parser": "^5.59.6",
-    "cypress": "^13.14.2",
+    "@semantic-release/github": "^11.0.3",
+    "@semantic-release/npm": "^12.0.2",
+    "@semantic-release/release-notes-generator": "^14.0.3",
+    "@types/eslint": "^8.56.12",
+    "@types/eslint-config-prettier": "^6.11.3",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.16.5",
+    "@types/prettier": "^3.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.38.0",
+    "@typescript-eslint/parser": "^8.38.0",
+    "cypress": "^13.17.0",
     "doctoc": "^2.2.1",
-    "eslint": "^8.40.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.3",
     "http-server": "^14.1.1",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.8.8",
+    "prettier": "^3.6.2",
     "replace-json-property": "^1.9.0",
-    "semantic-release": "^21.0.2",
-    "typescript": "5.4.2"
+    "semantic-release": "^24.2.7",
+    "typescript": "5.7.3"
   },
   "peerDependencies": {
     "cypress": ">10.0.0"
   },
   "dependencies": {
-    "@types/jest-image-snapshot": "^6.1.0",
+    "@types/jest-image-snapshot": "^6.4.0",
     "chalk": "^4.1.2",
-    "jest-image-snapshot": "^6.1.0"
-  },
-  "volta": {
-    "node": "20.10.0",
-    "yarn": "3.5.0"
+    "jest-image-snapshot": "^6.5.1"
   }
 }

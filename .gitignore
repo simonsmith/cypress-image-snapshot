@@ -11,6 +11,3 @@ cypress/screenshots
 cypress/videos
 cypress/snapshots/**/open
 cypress/**/__diff_output__
-/*.js
-/*.d.ts
-/*.map

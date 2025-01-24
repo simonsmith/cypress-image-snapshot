@@ -1,2 +1,4 @@
 dist
 .pnp.*
+CHANGELOG.md
+.yarn
