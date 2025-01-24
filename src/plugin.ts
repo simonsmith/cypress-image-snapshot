@@ -152,6 +152,7 @@ const runImageDiffAfterScreenshot = async (
   log(
     'result from diffImageToSnapshot',
     (() => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const {imgSrcString, ...rest} = snapshotResult
       return rest
     })(),

@@ -12,21 +12,29 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-         fetch-depth: '0'
-      - name: yarn install
-        uses: ./.github/actions/yarn-nm-install
+          fetch-depth: '0'
+      - uses: './.github/actions/install'
       - run: yarn lint
   cypress:
     needs: [install, lint]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: yarn install
-        uses: ./.github/actions/yarn-nm-install
+      - uses: './.github/actions/install'
       - name: Restore Cypress binary
         run: yarn install
       - name: Run tests
         run: yarn test:run
+      - name: Upload Cypress artifacts
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots-${{ github.run_number }}
+          path: |
+            cypress/snapshots/**/__diff_output__/
+            cypress/screenshots/
+            cypress/videos/
+          retention-days: 30
   release:
     needs: [cypress, lint]
     runs-on: ubuntu-latest
@@ -36,14 +44,11 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v4
-      - name: yarn install
-        uses: ./.github/actions/yarn-nm-install
+      - uses: ./.github/actions/install
       - name: Release
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          # ci:build outputs all the files to the root so that users do not
-          # need to install from `dist`
-          yarn ci:build
+          yarn build:ts
           yarn release

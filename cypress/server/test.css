@@ -210,7 +210,8 @@ Component
   background-color: hsl(0, 0%, 100%);
   box-shadow: 0 0 0 1px hsla(230, 13%, 9%, 0.05);
   z-index: 1;
-  transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1),
+  transition:
+    transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1),
     box-shadow 0.3s;
 }
 
@@ -289,7 +290,8 @@ Component
   flex-direction: column;
 
   background-color: hsl(0, 0%, 100%);
-  box-shadow: 0 0 0 1px hsla(230, 13%, 9%, 0.05),
+  box-shadow:
+    0 0 0 1px hsla(230, 13%, 9%, 0.05),
     0 0.3px 0.4px hsla(230, 13%, 9%, 0.02),
     0 0.9px 1.5px hsla(230, 13%, 9%, 0.045),
     0 3.5px 6px hsla(230, 13%, 9%, 0.09);
@@ -303,8 +305,10 @@ Component
 }
 
 .card-v14:hover {
-  box-shadow: 0 0 0 1px hsla(230, 13%, 9%, 0.05),
-    0 0.9px 1.25px hsla(230, 13%, 9%, 0.025), 0 3px 5px hsla(230, 13%, 9%, 0.05),
+  box-shadow:
+    0 0 0 1px hsla(230, 13%, 9%, 0.05),
+    0 0.9px 1.25px hsla(230, 13%, 9%, 0.025),
+    0 3px 5px hsla(230, 13%, 9%, 0.05),
     0 12px 20px hsla(230, 13%, 9%, 0.09);
 }
 
