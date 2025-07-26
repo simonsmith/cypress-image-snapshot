@@ -1,3 +1,20 @@
+# [10.0.0](https://github.com/simonsmith/cypress-image-snapshot/compare/9.1.0...10.0.0) (2025-07-26)
+
+
+### Bug Fixes
+
+* allowSizeMismatch error messaging ([079ad78](https://github.com/simonsmith/cypress-image-snapshot/commit/079ad78e93314f51d224267edab01894b53583cc)), closes [#70](https://github.com/simonsmith/cypress-image-snapshot/issues/70)
+
+
+### Features
+
+* support Cypress 13+ only ([dba9e40](https://github.com/simonsmith/cypress-image-snapshot/commit/dba9e40da1e7d18b86b506c158273b5ec7a15cc8))
+
+
+### BREAKING CHANGES
+
+* Cypress 13 is the minimum peer dependency
+
 # [9.1.0](https://github.com/simonsmith/cypress-image-snapshot/compare/9.0.3...9.1.0) (2024-07-16)
 
 
