@@ -1,7 +1,7 @@
 {
   "name": "@simonsmith/cypress-image-snapshot",
   "packageManager": "yarn@3.5.0",
-  "version": "10.0.0",
+  "version": "10.0.1",
   "description": "Cypress Image Snapshot binds jest-image-snapshot's image diffing logic to Cypress commands.",
   "repository": {
     "type": "git",

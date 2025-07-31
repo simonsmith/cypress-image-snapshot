@@ -1,3 +1,10 @@
+## [10.0.1](https://github.com/simonsmith/cypress-image-snapshot/compare/10.0.0...10.0.1) (2025-07-31)
+
+
+### Bug Fixes
+
+* update package.json exports ([fe2ea2b](https://github.com/simonsmith/cypress-image-snapshot/commit/fe2ea2bdcb0b1ce0e637c969a038cc6f952a9a37))
+
 # [10.0.0](https://github.com/simonsmith/cypress-image-snapshot/compare/9.1.0...10.0.0) (2025-07-26)
 
 
