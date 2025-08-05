@@ -18,19 +18,23 @@
   "exports": {
     ".": {
       "types": "./dist/plugin.d.ts",
-      "import": "./dist/plugin.js"
+      "import": "./dist/plugin.js",
+      "require": "./dist/plugin.js"
     },
     "./plugin": {
       "types": "./dist/plugin.d.ts",
-      "import": "./dist/plugin.js"
+      "import": "./dist/plugin.js",
+      "require": "./dist/plugin.js"
     },
     "./command": {
       "types": "./dist/command.d.ts",
-      "import": "./dist/command.js"
+      "import": "./dist/command.js",
+      "require": "./dist/command.js"
     },
     "./types": {
       "types": "./dist/types.d.ts",
-      "import": "./dist/types.js"
+      "import": "./dist/types.js",
+      "require": "./dist/types.js"
     }
   },
   "typesVersions": {
