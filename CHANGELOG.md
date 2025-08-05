@@ -1,3 +1,10 @@
+## [10.0.2](https://github.com/simonsmith/cypress-image-snapshot/compare/10.0.1...10.0.2) (2025-08-05)
+
+
+### Bug Fixes
+
+* add missing export configuration for CJS ([80f4524](https://github.com/simonsmith/cypress-image-snapshot/commit/80f452463a7a1ca0f65c28d0ba0576d7dfd0cd7e)), closes [#80](https://github.com/simonsmith/cypress-image-snapshot/issues/80)
+
 ## [10.0.1](https://github.com/simonsmith/cypress-image-snapshot/compare/10.0.0...10.0.1) (2025-07-31)
 
 
