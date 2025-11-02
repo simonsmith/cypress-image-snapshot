@@ -1,4 +1,4 @@
-import type {MatchImageSnapshotOptions} from 'jest-image-snapshot'
+import type {MatchImageSnapshotOptions} from './jest-image-snapshot-types'
 
 declare global {
   namespace Cypress {
