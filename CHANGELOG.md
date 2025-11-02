@@ -1,3 +1,10 @@
+## [10.0.3](https://github.com/simonsmith/cypress-image-snapshot/compare/10.0.2...10.0.3) (2025-11-02)
+
+
+### Bug Fixes
+
+* update jest-image-snapshot types to remove jest namespace ([465e420](https://github.com/simonsmith/cypress-image-snapshot/commit/465e420578cb67be7067042b7dacc5f01718d884)), closes [#81](https://github.com/simonsmith/cypress-image-snapshot/issues/81)
+
 ## [10.0.2](https://github.com/simonsmith/cypress-image-snapshot/compare/10.0.1...10.0.2) (2025-08-05)
 
 
