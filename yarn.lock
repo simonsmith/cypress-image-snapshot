@@ -1240,8 +1240,8 @@ __metadata:
     "@types/eslint": ^8.56.12
     "@types/eslint-config-prettier": ^6.11.3
     "@types/jest": ^29.5.14
-    "@types/jest-image-snapshot": ^6.4.0
     "@types/node": ^22.16.5
+    "@types/pixelmatch": ^5.2.6
     "@types/prettier": ^3.0.0
     "@typescript-eslint/eslint-plugin": ^8.38.0
     "@typescript-eslint/parser": ^8.38.0
@@ -1257,6 +1257,7 @@ __metadata:
     prettier: ^3.6.2
     replace-json-property: ^1.9.0
     semantic-release: ^24.2.7
+    ssim.js: ^3.5.0
     typescript: 5.7.3
   peerDependencies:
     cypress: ">13.0.0"
@@ -1390,27 +1391,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest-image-snapshot@npm:^6.4.0":
-  version: 6.4.0
-  resolution: "@types/jest-image-snapshot@npm:6.4.0"
-  dependencies:
-    "@types/jest": "*"
-    "@types/pixelmatch": "*"
-    ssim.js: ^3.1.1
-  checksum: db751a487f3a8aef7a6f7d4209378fb147670a8d5f7bb08739426ce6cc6a034bc02dca12b9eefcb7a9fe0deec4dc0a809d436445ca405d3e796d6058da4e0568
-  languageName: node
-  linkType: hard
-
-"@types/jest@npm:*":
-  version: 29.5.1
-  resolution: "@types/jest@npm:29.5.1"
-  dependencies:
-    expect: ^29.0.0
-    pretty-format: ^29.0.0
-  checksum: 0a22491dec86333c0e92b897be2c809c922a7b2b0aa5604ac369810d6b2360908b4a3f2c6892e8a237a54fa1f10ecefe0e823ec5fcb7915195af4dfe88d2197e
-  languageName: node
-  linkType: hard
-
 "@types/jest@npm:^29.5.14":
   version: 29.5.14
   resolution: "@types/jest@npm:29.5.14"
@@ -1460,12 +1440,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/pixelmatch@npm:*":
-  version: 5.2.4
-  resolution: "@types/pixelmatch@npm:5.2.4"
+"@types/pixelmatch@npm:^5.2.6":
+  version: 5.2.6
+  resolution: "@types/pixelmatch@npm:5.2.6"
   dependencies:
     "@types/node": "*"
-  checksum: 8920c3b7df22851ad69192fb7637206cb8f7dc73520f602202e36dd6f6b7701a4b56746175e7d7391ed9dc2c636d4d9bc5d7bd26fc3f1b11df1a63fb86418b91
+  checksum: 8299207286913414bfd95ac980418342f58e7bc93dc78befbd48ccab110b0341b400712f89fea2b0f0a3a4ad0b1aed18e98e26100b529abe60d4bcc14e11d2e3
   languageName: node
   linkType: hard
 
@@ -8237,7 +8217,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ssim.js@npm:^3.1.1":
+"ssim.js@npm:^3.1.1, ssim.js@npm:^3.5.0":
   version: 3.5.0
   resolution: "ssim.js@npm:3.5.0"
   checksum: 3f3a63ac8bec9c45e9f72252b786dcb4c91d7a74316b49c20e7935fd6e3869541e9324233b00eb0ab6bd15701016becd62740a5fb8c98f7b5115a9237efb2d4a
