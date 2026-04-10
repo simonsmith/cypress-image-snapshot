@@ -92,8 +92,7 @@ const runImageDiffAfterScreenshot = async (
 
   snapshotName = path
     .join(dirName, snapshotName)
-    .replace(/ \(attempt [0-9]+\)/, '')
-
+    .replace(/(?: \(attempt \d+\)| \(\d+\))+$/, '')
   log('snapshotName', snapshotName)
   log('screenshotConfig', screenshotConfig)
 
