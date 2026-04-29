@@ -1252,7 +1252,7 @@ __metadata:
     eslint-config-prettier: ^10.1.8
     eslint-plugin-prettier: ^5.5.3
     http-server: ^14.1.1
-    jest-image-snapshot: ^6.5.1
+    jest-image-snapshot: ^6.5.2
     npm-run-all: ^4.1.5
     prettier: ^3.6.2
     replace-json-property: ^1.9.0
@@ -5106,9 +5106,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-image-snapshot@npm:^6.5.1":
-  version: 6.5.1
-  resolution: "jest-image-snapshot@npm:6.5.1"
+"jest-image-snapshot@npm:^6.5.2":
+  version: 6.5.2
+  resolution: "jest-image-snapshot@npm:6.5.2"
   dependencies:
     chalk: ^4.0.0
     get-stdin: ^5.0.1
@@ -5118,11 +5118,11 @@ __metadata:
     pngjs: ^3.4.0
     ssim.js: ^3.1.1
   peerDependencies:
-    jest: ">=20 <=29"
+    jest: ">=20 <31"
   peerDependenciesMeta:
     jest:
       optional: true
-  checksum: 12d0d313655ce5de402654cdd4c419ff08e23b6c9a8567b2c891372f24d6c8cf7d7636cee5fa4758d7aef64556c75dd618ccaf754722abe69b762f299e374f38
+  checksum: 1043ce210019893a203862644c66ca6ea83db86661070953675277cc866ae1a9e52a58b6dd340f67d131a781e0a0d65a1c1967424a374f0f9ed573a522f9c6d0
   languageName: node
   linkType: hard
 
