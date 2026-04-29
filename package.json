@@ -105,7 +105,7 @@
   "dependencies": {
     "@types/pixelmatch": "^5.2.6",
     "chalk": "^4.1.2",
-    "jest-image-snapshot": "^6.5.1",
+    "jest-image-snapshot": "^6.5.2",
     "ssim.js": "^3.5.0"
   }
 }
