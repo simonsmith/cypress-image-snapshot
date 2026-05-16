@@ -1,3 +1,10 @@
+## [10.0.4](https://github.com/simonsmith/cypress-image-snapshot/compare/10.0.3...10.0.4) (2026-05-16)
+
+
+### Bug Fixes
+
+* anchor and support multiple numeric suffixes in snapshot names ([b8de710](https://github.com/simonsmith/cypress-image-snapshot/commit/b8de710cc6b19f024ef546e61a4b5a245c2febfe))
+
 ## [10.0.3](https://github.com/simonsmith/cypress-image-snapshot/compare/10.0.2...10.0.3) (2025-11-02)
 
 
