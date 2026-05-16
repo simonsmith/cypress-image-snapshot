@@ -1,5 +1,9 @@
 name: build-and-test
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
 jobs:
   install:
     runs-on: ubuntu-latest
@@ -37,6 +41,7 @@ jobs:
           retention-days: 30
   release:
     needs: [cypress, lint]
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     permissions:
       contents: write
