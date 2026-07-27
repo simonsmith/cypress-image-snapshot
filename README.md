@@ -212,17 +212,23 @@ See more:
 
 ### Updating snapshots
 
-Run Cypress with `--env updateSnapshots=true` in order to update the base image files for all of your tests.
+Run Cypress 15.10 or newer with `--expose updateSnapshots=true` in order to
+update the base image files for all of your tests. Use
+`--env updateSnapshots=true` on older Cypress versions.
 
 ### Preventing failures
 
-By default tests will fail when a snapshot fails to match. Run Cypress with
-`--env failOnSnapshotDiff=false` in order to prevent test failures when an image
-diff does not pass.
+By default tests will fail when a snapshot fails to match. Run Cypress 15.10 or
+newer with `--expose failOnSnapshotDiff=false` in order to prevent test failures
+when an image diff does not pass. Use `--env failOnSnapshotDiff=false` on older
+Cypress versions.
 
 ### Requiring snapshots to be present
 
-Run Cypress with `--env requireSnapshots=true` in order to fail if snapshots are missing. This is useful in continuous integration where snapshots should be present in advance.
+Run Cypress 15.10 or newer with `--expose requireSnapshots=true` in order to fail
+if snapshots are missing. Use `--env requireSnapshots=true` on older Cypress
+versions. This is useful in continuous integration where snapshots should be
+present in advance.
 
 ## How it works
 

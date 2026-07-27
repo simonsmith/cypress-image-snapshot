@@ -8,10 +8,26 @@ import type {
 } from './types'
 
 const COMMAND_NAME = 'cypress-image-snapshot'
+
+const getPublicConfig = <T>(key: string): T | undefined => {
+  const exposedValue = Cypress.expose?.(key) as T | undefined
+
+  if (
+    exposedValue !== undefined ||
+    Cypress.config('allowCypressEnv') === false
+  ) {
+    return exposedValue
+  }
+
+  return Cypress.env?.(key) as T | undefined
+}
+
 const screenshotsFolder =
   Cypress.config('screenshotsFolder') || 'cypress/screenshots'
-const isUpdateSnapshots: boolean = Cypress.env('updateSnapshots') || false
-const isSnapshotDebug: boolean = Cypress.env('debugSnapshots') || false
+const isUpdateSnapshots: boolean =
+  getPublicConfig<boolean>('updateSnapshots') || false
+const isSnapshotDebug: boolean =
+  getPublicConfig<boolean>('debugSnapshots') || false
 
 const defaultOptions: SnapshotOptions = {
   screenshotsFolder,
@@ -50,10 +66,11 @@ const matchImageSnapshot =
     nameOrCommandOptions: CypressImageSnapshotOptions | string,
     commandOptions?: CypressImageSnapshotOptions,
   ) => {
-    // access the env here so that it can be overridden in tests
+    // Access the config here so that it can be overridden in tests.
     const isFailOnSnapshotDiff: boolean =
-      Cypress.env('failOnSnapshotDiff') !== false
-    const isRequireSnapshots: boolean = Cypress.env('requireSnapshots') || false
+      getPublicConfig<boolean>('failOnSnapshotDiff') !== false
+    const isRequireSnapshots: boolean =
+      getPublicConfig<boolean>('requireSnapshots') || false
 
     const {filename, options} = getNameAndOptions(
       nameOrCommandOptions,
