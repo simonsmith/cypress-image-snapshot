@@ -87,7 +87,7 @@
     "@types/prettier": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^8.38.0",
     "@typescript-eslint/parser": "^8.38.0",
-    "cypress": "^15.19.0",
+    "cypress": "^16.0.0",
     "doctoc": "^2.2.1",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.1.8",
@@ -100,7 +100,7 @@
     "typescript": "5.7.3"
   },
   "peerDependencies": {
-    "cypress": ">13.0.0"
+    "cypress": ">=15.10.0"
   },
   "dependencies": {
     "@types/pixelmatch": "^5.2.6",

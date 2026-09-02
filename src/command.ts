@@ -9,18 +9,8 @@ import type {
 
 const COMMAND_NAME = 'cypress-image-snapshot'
 
-const getPublicConfig = <T>(key: string): T | undefined => {
-  const exposedValue = Cypress.expose?.(key) as T | undefined
-
-  if (
-    exposedValue !== undefined ||
-    Cypress.config('allowCypressEnv') === false
-  ) {
-    return exposedValue
-  }
-
-  return Cypress.env?.(key) as T | undefined
-}
+const getPublicConfig = <T>(key: string): T | undefined =>
+  Cypress.expose?.(key) as T | undefined
 
 const screenshotsFolder =
   Cypress.config('screenshotsFolder') || 'cypress/screenshots'

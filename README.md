@@ -212,23 +212,20 @@ See more:
 
 ### Updating snapshots
 
-Run Cypress 15.10 or newer with `--expose updateSnapshots=true` in order to
-update the base image files for all of your tests. Use
-`--env updateSnapshots=true` on older Cypress versions.
+Run Cypress with `--expose updateSnapshots=true` in order to
+update the base image files for all of your tests.
 
 ### Preventing failures
 
-By default tests will fail when a snapshot fails to match. Run Cypress 15.10 or
-newer with `--expose failOnSnapshotDiff=false` in order to prevent test failures
-when an image diff does not pass. Use `--env failOnSnapshotDiff=false` on older
-Cypress versions.
+By default tests will fail when a snapshot fails to match. Run Cypress with
+`--expose failOnSnapshotDiff=false` in order to prevent test failures
+when an image diff does not pass.
 
 ### Requiring snapshots to be present
 
-Run Cypress 15.10 or newer with `--expose requireSnapshots=true` in order to fail
-if snapshots are missing. Use `--env requireSnapshots=true` on older Cypress
-versions. This is useful in continuous integration where snapshots should be
-present in advance.
+Run Cypress with `--expose requireSnapshots=true` in order to fail
+if snapshots are missing. This is useful in continuous integration where
+snapshots should be present in advance.
 
 ## How it works
 
@@ -240,7 +237,10 @@ The workflow of `cy.matchImageSnapshot()` when running Cypress is:
 
 ## Requirements
 
-Tested on Cypress 13.x and 14.x
+Tested on Cypress 15.x and 16.x. Requires Cypress 15.10+ for `Cypress.expose`
+support, which is used to pass configuration to the plugin.
+
+If you're on Cypress 13.x or 14.x, use version 10.x of this package instead.
 
 Cypress must be installed as a peer dependency
 
