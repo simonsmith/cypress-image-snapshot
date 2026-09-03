@@ -1,3 +1,15 @@
+# [11.0.0](https://github.com/simonsmith/cypress-image-snapshot/compare/10.1.1...11.0.0) (2026-09-03)
+
+
+### chore
+
+* update Cypress to 16.0.0 and replace Cypress.env() with Cypress.expose() ([8fac0a6](https://github.com/simonsmith/cypress-image-snapshot/commit/8fac0a61669b4042c108625a4855288123063801))
+
+
+### BREAKING CHANGES
+
+* Requires Cypress 15.10+ for Cypress.expose support
+
 ## [10.1.1](https://github.com/simonsmith/cypress-image-snapshot/compare/10.1.0...10.1.1) (2026-08-02)
 
 
